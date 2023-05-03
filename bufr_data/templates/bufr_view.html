@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block extra_css%}
+<style>
+    input[type="file"]{ 
+        color:transparent;
+        height: 40px;
+    }
+
+</style>
+
+{% endblock %}
+
+{% block page_name %} BUFR IMEX{% endblock %}
+{% block page_title %} BUFR IMEX {% endblock %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-lg-7 mb-lg-0 mb-4">
+
+      <div class="card z-index-2 mt-4">
+        <div class="card-body p-1">
+          <div class="row mt-1 p-2">
+              <div class="col-md-5">
+                <p  class="mg-b-10">Select Station</p>
+                <select class="form-control" id="station" name="station_id" placeholder="Select Station" required>
+                </select>
+              </div>
+              <div class="col-md-5">
+                <p class="mg-b-10">Select Parameter</p>
+                <select class="form-control" id="country">
+                    {% for row in parameters %}
+                        <option value="{{row.id}}">{{row.name}}</option>
+                    {% endfor %}
+                </select>
+              </div>
+        
+              <div class="col-md-2">
+                <p  class="mg-b-10">&nbsp;</p>
+                <p id="view-meta" class=" form-control btn btn-primary br-5">Examine</p>
+              </div>
+          </div>
+        </div>
+      </div>
+  </div>
+ 
+
+  <div class="col-lg-5 mb-lg-0 mb-4">
+    <div class="card mt-4">
+      <div class="card-body p-1">
+        <div class="row mt-1 p-2">
+            <div class="col-md-9">
+              <p  class="mg-b-8">Bufr file to upload:</p>                
+              <input id="bufr-upload" type="file" class="form-control" accept="image/png, image/jpeg">
+            </div>
+            <div class="col-md-3">
+                <p  class="mg-b-10">&nbsp;</p>
+                <p id="view-meta" class=" form-control btn btn-primary br-5">Upload</p>
+            </div>
+        </div>
+      </div>
+  </div>
+
+</div>
+
+
+
+</div>
+
+{%endblock%}
+
+{%block extra_scripts%}
+<script>
+    var element = document.getElementById("bufr-nav");
+    element.classList.add("active");
+</script>
+{% endblock %}

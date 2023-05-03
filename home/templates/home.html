@@ -1,0 +1,628 @@
+{% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+
+{% endblock %}
+
+{% block page_name %} Home {% endblock %}
+{% block page_title %} Home {% endblock %}
+
+{%block content%}
+
+<div class="row">
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-body p-3">
+          <div class="row">
+            <div class="col-8">
+              <div class="numbers">
+                <p class="text-sm mb-0 text-capitalize font-weight-bold">Number of Stations</p>
+                <h5 class="font-weight-bolder mb-0">
+                  {{ num_stations }}
+                  <!--<span class="text-success text-sm font-weight-bolder">+55%</span>-->
+                </h5>
+              </div>
+            </div>
+            <div class="col-4 text-end">
+              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-body p-3">
+          <div class="row">
+            <div class="col-10">
+              <div class="numbers">
+                <p class="text-sm mb-0 text-capitalize font-weight-bold">Time Period</p>
+                <h5 class="font-weight-bolder mb-0">
+                  2022-01-01 to 2022-10-01
+                  <!--<span class="text-success text-sm font-weight-bolder">+3%</span>-->
+                </h5>
+              </div>
+            </div>
+            <!--<div class="col-2 text-end">
+              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+              </div>
+            </div>-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-body p-3">
+          <div class="row">
+            <div class="col-8">
+              <div class="numbers">
+                <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Observations</p>
+                <h5 class="font-weight-bolder mb-0">
+                  {{obs_count}}
+                 <!-- <span class="text-danger text-sm font-weight-bolder">-2%</span>-->
+                </h5>
+              </div>
+            </div>
+            <div class="col-4 text-end">
+              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6">
+      <div class="card">
+        <div class="card-body p-3">
+          <div class="row">
+            <div class="col-8">
+              <div class="numbers">
+                <p class="text-sm mb-0 text-capitalize font-weight-bold">Forecasts</p>
+                <h5 class="font-weight-bolder mb-0">
+                  Update Status
+                  
+                </h5>
+              </div>
+            </div>
+            <div class="col-4 text-end">
+              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                <i class="ni ni-check-bold text-lg opacity-10" aria-hidden="true"></i>
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-4">
+    <!--<div class="col-lg-7 mb-lg-0 mb-4">
+      <div class="card">
+        <div class="card-body p-3">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="d-flex flex-column h-100">
+                <p class="mb-1 pt-2 text-bold">Built by developers</p>
+                <h5 class="font-weight-bolder">Soft UI Dashboard</h5>
+                <p class="mb-5">From colors, cards, typography to complex elements, you will find the full documentation.</p>
+                <a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
+                  Read More
+                  <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+                </a>
+              </div>
+            </div>
+            <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
+              <div class="bg-gradient-primary border-radius-lg h-100">
+                <img src="{% static '/assets/img/shapes/waves-white.svg' %}" class="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves">
+                <div class="position-relative d-flex align-items-center justify-content-center h-100">
+                  <img class="w-100 position-relative z-index-2 pt-4" src="{% static '/assets/img/illustrations/rocket-white.png' %}" alt="rocket">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-5">
+      <div class="card h-100 p-3">
+        <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="background-image: url('../assets/img/ivancik.jpg');">
+          <span class="mask bg-gradient-dark"></span>
+          <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
+            <h5 class="text-white font-weight-bolder mb-4 pt-2">Work with the rockets</h5>
+            <p class="text-white">Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the opportunity first.</p>
+            <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
+              Read More
+              <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>-->
+  <div class="row mt-4">
+    <div class="col-lg-5 mb-lg-0 mb-4">
+      <div class="card z-index-2" style="height: 100%;">
+        <!-- <div class="card-header pb-0">
+          <h6>Stations Map</h6>          
+        </div> -->
+        <div class="card-body p-3">
+          <div id="map" style="height: 400px">
+          </div>
+        </div>
+      </div>
+ 
+    </div>
+    <div class="col-lg-7"><!-- start of obs chart-->
+      <div class="card z-index-2" style="height: 100%">
+        <div class="card-header pb-0">
+          <h6>Observation Chart</h6>
+          <p class="text-sm">
+            <a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="{% url 'obs_data.obs_view'%}">
+              See more
+              <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+            </a>
+          </p>
+        </div>
+        <div class="card-body p-3">
+          <div class="chart">
+            <canvas id="chart-line" class="chart-canvas" height="300">
+            </canvas>
+          </div>
+        </div>
+      </div>
+    </div><!--end of obs chart-->
+  </div>
+  <div class="row mt-4">
+    <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
+      <div class="card"><!--start oof stations overview-->
+        <div class="card-header pb-0">
+          <div class="row">
+            <div class="col-lg-6 col-7">
+              <h6>Stations Forecasts Overview</h6>
+              <p class="text-sm mb-0">
+                <!--<i class="fa fa-check text-info" aria-hidden="true"></i>
+                <span class="font-weight-bold ms-1"></span> -->
+              </p>
+            </div>
+            <div class="col-lg-6 col-5 my-auto text-end">
+              <div class="dropdown float-lg-end pe-4">
+                <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa fa-ellipsis-v text-secondary"></i>
+                </a>
+                <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
+                  <li><a class="dropdown-item border-radius-md" href="javascript:;">Change parameter</a></li>
+                  <li><a class="dropdown-item border-radius-md" href="javascript:;">Change stations</a></li>
+                  <li><a class="dropdown-item border-radius-md" href="javascript:;">Select station</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-body px-0 pb-2">
+          <div class="table-responsive">
+            <table class="table align-items-center mb-0">
+              <thead>
+                <tr>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stations</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">WMO ID</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Parameter</th>
+                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Forecast</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="align-middle text-center">
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">Colombo</h6>
+                      </div>
+                    </div>
+                  </td>
+                  <td class="align-middle text-center">
+
+                    <p>2000</p>
+
+                  </td>
+                  <td class="align-middle text-center text-sm">
+                    <span class="text-xs font-weight-bold"> Rainfall </span>
+                  </td>
+                  <td class="align-middle text-center">
+                    <div class="progress-wrapper w-75 mx-auto">
+                      <div class="progress-info">
+                        <div class="progress-percentage">
+                          <span class="text-xs font-weight-bold">20.2 mm </span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="align-middle text-center">
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">Colombo</h6>
+                      </div>
+                  </td>
+                  <td class="align-middle text-center">
+
+                    <p>2000</p>
+
+                  </td>
+                  <td class="align-middle text-center text-sm">
+                    <span class="text-xs font-weight-bold"> Rainfall </span>
+                  </td>
+                  <td class="align-middle text-center">
+                    <div class="progress-wrapper w-75 mx-auto">
+                      <div class="progress-info">
+                        <div class="progress-percentage">
+                          <span class="text-xs font-weight-bold">20.2 mm </span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="align-middle text-center">
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">Colombo</h6>
+                      </div>
+                  </td>
+                  <td class="align-middle text-center">
+
+                    <p>2000</p>
+
+                  </td>
+                  <td class="align-middle text-center text-sm">
+                    <span class="text-xs font-weight-bold"> Rainfall </span>
+                  </td>
+                  <td class="align-middle text-center">
+                    <div class="progress-wrapper w-75 mx-auto">
+                      <div class="progress-info">
+                        <div class="progress-percentage">
+                          <span class="text-xs font-weight-bold">20.2 mm </span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="align-middle text-center">
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">Colombo</h6>
+                      </div>
+                  </td>
+                  <td class="align-middle text-center">
+
+                    <p>2000</p>
+
+                  </td>
+                  <td class="align-middle text-center text-sm">
+                    <span class="text-xs font-weight-bold"> Rainfall </span>
+                  </td>
+                  <td class="align-middle text-center">
+                    <div class="progress-wrapper w-75 mx-auto">
+                      <div class="progress-info">
+                        <div class="progress-percentage">
+                          <span class="text-xs font-weight-bold">20.2 mm </span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="align-middle text-center">
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">Colombo</h6>
+                      </div>
+                  </td>
+                  <td class="align-middle text-center">
+
+                    <p>2000</p>
+
+                  </td>
+                  <td class="align-middle text-center text-sm">
+                    <span class="text-xs font-weight-bold"> Rainfall </span>
+                  </td>
+                  <td class="align-middle text-center">
+                    <div class="progress-wrapper w-75 mx-auto">
+                      <div class="progress-info">
+                        <div class="progress-percentage">
+                          <span class="text-xs font-weight-bold">20.2 mm </span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="align-middle text-center">
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="mb-0 text-sm">Colombo</h6>
+                      </div>
+                  </td>
+                  <td class="align-middle text-center">
+
+                    <p>2000</p>
+
+                  </td>
+                  <td class="align-middle text-center text-sm">
+                    <span class="text-xs font-weight-bold"> Rainfall </span>
+                  </td>
+                  <td class="align-middle text-center">
+                    <div class="progress-wrapper w-75 mx-auto">
+                      <div class="progress-info">
+                        <div class="progress-percentage">
+                          <span class="text-xs font-weight-bold">20.2 mm </span>
+                        </div>
+                      </div>
+
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div><!--end of station overview-->
+    </div>
+    <div class="col-lg-4 col-md-6">
+      <div class="card h-100">
+        <div class="card-header pb-0">
+          <h6>Data Quality Control Overview</h6>
+
+          <p class="text-sm">
+            <a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="{% url 'dqc.dqc_view' %}">
+              See more
+              <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
+            </a>
+<!-- 
+            <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>
+            <span class="font-weight-bold">2000</span> records checked. -->
+          </p>
+        </div>
+        <div class="card-body p-3">
+          <div class="timeline timeline-one-side">
+            <div class="timeline-block mb-3">
+              <span class="timeline-step">
+                <i class="ni ni-bell-55 text-success text-gradient"></i>
+              </span>
+              <div class="timeline-content">
+                <h6 class="text-dark text-sm font-weight-bold mb-0">Station 1</h6>
+                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">22 DEC 7:20 PM</p>
+              </div>
+            </div>
+            <div class="timeline-block mb-3">
+              <span class="timeline-step">
+                <i class="ni ni-bell-55 text-success text-gradient"></i>
+              </span>
+              <div class="timeline-content">
+                <h6 class="text-dark text-sm font-weight-bold mb-0">Station 2</h6>
+                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">21 DEC 11 PM</p>
+              </div>
+            </div>
+            <div class="timeline-block mb-3">
+              <span class="timeline-step">
+                <i class="ni ni-bell-55 text-success text-gradient"></i>
+              </span>
+              <div class="timeline-content">
+                <h6 class="text-dark text-sm font-weight-bold mb-0">Station 3</h6>
+                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">21 DEC 9:34 PM</p>
+              </div>
+            </div>
+            <div class="timeline-block mb-3">
+              <span class="timeline-step">
+                <i class="ni ni-bell-55 text-success text-gradient"></i>
+              </span>
+              <div class="timeline-content">
+                <h6 class="text-dark text-sm font-weight-bold mb-0">Station 4</h6>
+                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">20 DEC 2:20 AM</p>
+              </div>
+            </div>
+            <div class="timeline-block mb-3">
+              <span class="timeline-step">
+                <i class="ni ni-bell-55 text-success text-gradient"></i>
+              </span>
+              <div class="timeline-content">
+                <h6 class="text-dark text-sm font-weight-bold mb-0">Station 5</h6>
+                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">18 DEC 4:54 AM</p>
+              </div>
+            </div>
+            <div class="timeline-block">
+              <span class="timeline-step">
+                <i class="ni ni-bell-55 text-success text-gradient"></i>
+              </span>
+              <div class="timeline-content">
+                <h6 class="text-dark text-sm font-weight-bold mb-0">Station 6</h6>
+                <p class="text-secondary font-weight-bold text-xs mt-1 mb-0">17 DEC</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="footer pt-3  ">
+    <div class="container-fluid">
+      <div class="row align-items-center justify-content-lg-between">
+        <div class="col-lg-6 mb-lg-0 mb-4">
+          <div class="copyright text-center text-sm text-muted text-lg-start">
+            © <script>
+              document.write(new Date().getFullYear())
+            </script>
+            <!-- made with <i class="fa fa-heart"></i> by
+            <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
+            for a better web. -->
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+            <li class="nav-item">
+              <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+            </li>
+            <li class="nav-item">
+              <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+{%endblock%}
+
+
+{%block extra_scripts%}
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+
+
+<script>
+
+    var element = document.getElementById("dash-nav");
+    element.classList.add("active");
+    var map_url = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmF6bXVsLXJpbWVzIiwiYSI6ImNraTcyajZzYTEwN2QzMm1oMXd1b3phMTYifQ.APkKLsJsTz-TVOVEoo46zQ'
+
+    var map = L.map('map').setView([7.8731, 80.7718], 9);
+
+    var stns = {{stations|safe}}
+    console.log(typeof(stns))
+    stns_list = []
+
+    stns.forEach(element => {
+      let marker = L.marker([element['lat'], element['lon']]).bindPopup("<b>"+ element['name'] +"<b>")
+      stns_list.push(marker)
+
+    });
+    var layerGroup = L.layerGroup(stns_list).addTo(map);
+
+    L.tileLayer(map_url, {
+      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      maxZoom: 27,
+      id: 'mapbox/outdoors-v11',
+      tileSize: 512,
+      zoomOffset: -1,
+
+    }).addTo(map);
+
+</script>
+
+
+<script>
+    var times = []
+    var vals = []
+    var obs = []
+    var ctx2 = document.getElementById("chart-line").getContext("2d");
+    fetch(`{% url 'obs_data.get_obs' %}?start_date=2021-01-01&end_date=2021-01-20&station_id=832&param_id=9`)
+    .then(r=>r.json())
+    .then(resp=>{
+        new Chart(ctx2, {
+        type: 'bar',
+        data: {
+          labels: resp['obs'].map(row => moment(row['end_time']).format('YYYY-MM-DD')),
+          datasets: [{
+            label : 'Colombo rainfall',
+            data: resp['obs'].map(row => row['value']),
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgb(255, 99, 132)',
+            borderWidth: 1
+          }]
+
+        },
+        options:{
+          responsive: true,
+          maintainAspectRatio: false,
+          scales:{
+            y:{
+              beginAtZero: true
+            }
+        }}
+      })
+    }
+    )
+
+        // var ctx = document.getElementById("chart-bars").getContext("2d");
+
+    // new Chart(ctx, {
+    //   type: "bar",
+    //   data: {
+    //     labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+    //     datasets: [{
+    //       label: "Sales",
+    //       tension: 0.4,
+    //       borderWidth: 0,
+    //       borderRadius: 4,
+    //       borderSkipped: false,
+    //       backgroundColor: "#fff",
+    //       data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
+    //       maxBarThickness: 6
+    //     }, ],
+    //   },
+    //   options: {
+    //     responsive: true,
+    //     maintainAspectRatio: false,
+    //     plugins: {
+    //       legend: {
+    //         display: false,
+    //       }
+    //     },
+    //     interaction: {
+    //       intersect: false,
+    //       mode: 'index',
+    //     },
+    //     scales: {
+    //       y: {
+    //         grid: {
+    //           drawBorder: false,
+    //           display: false,
+    //           drawOnChartArea: false,
+    //           drawTicks: false,
+    //         },
+    //         ticks: {
+    //           suggestedMin: 0,
+    //           suggestedMax: 500,
+    //           beginAtZero: true,
+    //           padding: 15,
+    //           font: {
+    //             size: 14,
+    //             family: "Open Sans",
+    //             style: 'normal',
+    //             lineHeight: 2
+    //           },
+    //           color: "#fff"
+    //         },
+    //       },
+    //       x: {
+    //         grid: {
+    //           drawBorder: false,
+    //           display: false,
+    //           drawOnChartArea: false,
+    //           drawTicks: false
+    //         },
+    //         ticks: {
+    //           display: false
+    //         },
+    //       },
+    //     },
+    //   },
+    // });
+
+  </script>
+
+{%endblock%}
+
+

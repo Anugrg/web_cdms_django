@@ -1,0 +1,277 @@
+{% extends 'forecast_base.html' %}
+
+
+{% block forecast_content %}
+
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                ECMWF HRES
+            </div>
+            <div class="card-body pt-1">
+ 
+                <div id="forecast-map" class="p-0" style="height:550px;background:#535364;width:100%;">
+                    <div id="params">
+                        <div id="param_table"></div>
+                    </div>
+                </div>
+
+                <div style="width:100%;display:inline-grid;grid-template-columns: 5% 90% 5%; padding:10px 10px; background: transparent">
+
+                    <div class="text-left" style="text-align: left;padding-top: 12px;"><i id="fp" class="btn fpn fa fa-arrow-circle-left"></i></div>
+                    <div id="slider"> </div> 
+                    <div class="text-right" style="text-align: right;padding-top: 12px;"><i id="fn" class="btn fpn fa fa-arrow-circle-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock%}
+
+{%block forecast_scripts_extra %}
+
+
+<script>
+    var fmap_nav = document.getElementById('fmap')
+    fmap_nav.classList.add('active')
+
+    var fn = document.getElementById('fn')
+    var fp = document.getElementById('fp')
+
+    const STATE = {
+        locked:false,
+        loaded_var: 'rf',
+        loaded_id: 0,
+        layer:null,
+        finfo:null,
+        slider: null,
+        full_screen: false,
+    }
+
+
+    const source = '{{source}}'
+    const data_loc = '{{data_loc}}'
+    const init_time = '{{init_time}}';
+
+    const url_pre = '{{url_prefix}}';
+
+    var fcst_map = L.map('forecast-map').setView([7.8731, 80.7718], 8);
+    L.tileLayer("https://api.mapbox.com/styles/v1/nazmul-rimes/{id}/tiles/256/{z}/{x}/{y}@2x?access_token={accessToken}", {
+        attribution: '',
+        maxZoom: 10,
+        id: 'ckqm95cq104bp18o9dvhso52v',
+        tileSize: 512,
+        zoomOffset: -1,
+        zIndex: 200,
+        accessToken: 'pk.eyJ1IjoibmF6bXVsLXJpbWVzIiwiYSI6ImNrOWFzeHNtcDA3MjAzbG50dnB0YmkxNnAifQ.usNB6Kf9PyFtKTUF1XI38g',
+    }).addTo(fcst_map);
+
+    const cmap_legend = L.control({position: 'bottomright'});
+    cmap_legend.onAdd = function (map) {
+        var _div = L.DomUtil.create('div', 'legend');
+        _div.innerHTML = `<div id="cbar"></div>`;
+        L.DomEvent.disableClickPropagation(_div);
+        return _div;
+    };
+
+    cmap_legend.addTo(fcst_map)
+
+
+    fn.addEventListener("click",()=>{
+
+        let slider_val = STATE.slider.input.value
+        load_id(slider_val,"fn")
+
+    });
+
+    fp.addEventListener("click",()=>{
+        let slider_val = STATE.slider.input.value
+        load_id(slider_val-2,"fp")
+    });
+    
+    function getPopupStr(latlng){
+        let val = STATE.layer.valueAt(latlng.lng, latlng.lat)
+
+        let ld_var = STATE.loaded_var
+        return `<p>${STATE.finfo.params[ld_var].fullname} ${val.toFixed(2)} ${STATE.finfo.params[ld_var].unit}</p>`
+    }
+
+    
+    fcst_map.on("click",(e)=>{
+
+        let latlng = e.latlng;
+        fcst_map.closePopup()
+        L.popup()
+        .setLatLng(e.latlng)
+        .setContent(getPopupStr(latlng))
+        .openOn(fcst_map);
+    })
+
+    function build_url(id){
+
+        return `${url_pre}/${STATE.loaded_var}.${STATE.finfo.file_suffix[id]}`
+    }
+
+    function init_slider(){
+
+        let ion_slider = $('#slider').ionRangeSlider({
+            skin:'square',
+            type:'single',
+            min:1,
+            max:10,
+            step:1,
+            grid: true,
+            grid_snap:true,
+            hide_min_max:true,
+            onFinish: sliderUpdate,
+            force_edges:true,
+            prettify: (v)=>{
+                return `${STATE.finfo.time[v-1].start_time} - ${STATE.finfo.time[v-1].end_time}`
+            }
+        });
+
+        STATE.slider = ion_slider.data('ionRangeSlider');
+    }
+
+    function sliderUpdate(){
+        let slider_val = STATE.slider.input.value;
+        load_id(slider_val-1)
+    }
+
+    $("body").on("click" ,'p.parameter-btn', function(){
+        console.log("cliccc", console.log($(this)))
+
+        let new_var = $(this).attr('data-param')
+        STATE.loaded_var = new_var
+        load_id(STATE.loaded_id)
+
+    });
+
+
+    function load_id(id,load_type='fn'){
+
+        // check if state is locked 
+        if (STATE.locked){
+            console.log("state_locked")
+            return 0;
+        }
+
+        if (id<0 || id>= STATE.finfo.time.length){
+            console.log("out of bound id requested")
+            return 10;
+        }
+
+        // lock state
+        STATE.locked=true;
+
+        if (load_type == 'fn'){
+            fn.classList.remove("fa-arrow-circle-right")
+            fn.classList.add("fa-circle-notch","fa-spin")
+        }
+        else if(load_type=='fp'){
+            fp.classList.remove("fa-arrow-circle-left")
+            fp.classList.add("fa-circle-notch","fa-spin")
+        }
+
+        fetch(build_url(id)).then(r=>r.json()).then((raster_json)=>{
+
+            let options = { 'opacity': 1, 'tileSize': 512 };
+            
+            options.colorinf = STATE.finfo.params[STATE.loaded_var].cinf
+            
+            
+            if (STATE.layer) {
+                fcst_map.removeLayer(STATE.layer)
+            }
+
+            STATE.layer = L.gridLayer.rasterGridLayer(raster_json, options);
+            fcst_map.addLayer(STATE.layer)
+            changeColorBar(STATE.layer._colormap)
+
+            if (load_type == 'fn'){
+                fn.classList.remove("fa-circle-notch", "fa-spin")
+                fn.classList.add("fa-arrow-circle-right")
+                 
+            }
+
+            if (load_type == 'fp'){
+                fp.classList.remove("fa-circle-notch" ,"fa-spin")
+                fp.classList.add("fa-arrow-circle-left")
+            }
+
+            $(".parameter-btn").removeClass("active_var");
+
+            $(`#__${STATE.loaded_var}`).addClass("active_var");
+
+            STATE.loaded_id = id
+            STATE.slider.update({from:id+1})
+
+            STATE.locked = false
+            
+        });
+    }
+    function changeColorBar(_cmap,_txt_color='#000'){
+
+        let delta  = (_cmap.max-_cmap.min)/5;
+        let _start = _cmap.min + (delta/2)
+
+
+        let _cmapTable = `<table style="width:100%;"><tr><td>${_start.toFixed(2)}</td>`;
+
+        for(let i=1; i<=4; i++){
+            _cmapTable += `<td>${(_start+delta*i).toFixed(2)}</td>`;
+        }
+
+        _cmapTable += `</tr><table>`;
+
+        var cbar = document.getElementById("cbar")
+        cbar.innerHTML = _cmapTable;
+        cbar.style.setProperty("background","linear-gradient(to right,"+_cmap.str+")");
+        cbar.style.setProperty("color",_txt_color);
+    }
+    function init_parameter_buttons(){
+        
+        let param_list = ""
+        Object.keys(STATE.finfo.params).forEach((key)=>{
+
+            param_list += `
+                
+                <p  aria-label="${STATE.finfo.params[key].fullname}" data-microtip-position="left" role="tooltip" data-param="${key}" class="parameter-btn" id="__${key}"> 
+                    <i class="${STATE.finfo.params[key].fa_icon}"></i>
+                </p>
+                `
+        })
+        var paramtable = document.getElementById("param_table")
+        paramtable.innerHTML = param_list;
+    }
+
+    function init_forecast(){
+
+        // initial loading
+        fetch(`${url_pre}/finfo.json`).then(r=>r.json()).then((data)=>{
+
+            STATE.finfo = data;
+
+            // // initialize slider
+            init_slider();
+
+            // // initialize parameter buttons
+            init_parameter_buttons();
+
+            // initial raster load
+            load_id(0,"fn");
+        })
+    }
+
+    init_forecast();
+
+    var pbtn = document.getElementsByClassName('parameter-btn')
+    console.log(pbtn)
+</script>
+
+
+{%endblock%}

@@ -1,0 +1,3013 @@
+- model: obs_data.station
+  fields:
+    name: "Ranorava"
+    full_name: "Ranorava"
+    lat: "8.37"
+    lon: "80.22"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Galenbindunaveva"
+    full_name: "Galenbindunaveva"
+    lat: "8.28"
+    lon: "80.72"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Huruliveva"
+    full_name: "Huruliveva"
+    lat: "8.22"
+    lon: "80.70"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Parangiyavadiya"
+    full_name: "Parangiyavadiya"
+    lat: "8.48"
+    lon: "80.87"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kalavedi Ulpotha"
+    full_name: "Kalavedi Ulpotha"
+    lat: "8.63"
+    lon: "80.77"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Ethavetunu veva"
+    full_name: "Ethavetunu veva"
+    lat: "8.95"
+    lon: "80.73"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Madatugama"
+    full_name: "Madatugama"
+    lat: "7.93"
+    lon: "80.62"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Thanthirimale"
+    full_name: "Thanthirimale"
+    lat: "8.58"
+    lon: "80.25"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Yakaveva"
+    full_name: "Yakaveva"
+    lat: "8.58"
+    lon: "80.38"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Rambava"
+    full_name: "Rambava"
+    lat: "8.43"
+    lon: "80.48"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Nochichiyagama"
+    full_name: "Nochichiyagama"
+    lat: "8.27"
+    lon: "80.20"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Mihinthale"
+    full_name: "Mihinthale"
+    lat: "8.37"
+    lon: "80.50"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Rathmalgahewewa"
+    full_name: "Rathmalgahewewa"
+    lat: "8.53"
+    lon: "80.68"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Lower Spring Valley"
+    full_name: "Lower Spring Valley"
+    lat: "6.92"
+    lon: "81.10"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Wewessa Estate"
+    full_name: "Wewessa Estate"
+    lat: "6.97"
+    lon: "81.12"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Mabadowa"
+    full_name: "Mabadowa"
+    lat: "7.02"
+    lon: "81.17"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Bibile"
+    full_name: "Bibile"
+    lat: "7.15"
+    lon: "81.22"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Galoola"
+    full_name: "Galoola"
+    lat: "7.07"
+    lon: "81.15"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Mahiyanganaya"
+    full_name: "Mahiyanganaya"
+    lat: "7.34"
+    lon: "80.99"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Ledger estate"
+    full_name: "Ledger estate"
+    lat: "7.03"
+    lon: "81.02"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Hilpanakandura"
+    full_name: "Hilpanakandura"
+    lat: "6.87"
+    lon: "80.93"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Dyraba Estate"
+    full_name: "Dyraba Estate"
+    lat: "6.87"
+    lon: "80.93"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Welimada Malwatta"
+    full_name: "Welimada Malwatta"
+    lat: "6.90"
+    lon: "80.90"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Gurithlawa Micle Field"
+    full_name: "Gurithlawa Micle Field"
+    lat: "6.87"
+    lon: "80.90"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kahagolla Estate"
+    full_name: "Kahagolla Estate"
+    lat: "6.78"
+    lon: "80.97"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Haldummulla"
+    full_name: "Haldummulla"
+    lat: "6.77"
+    lon: "80.90"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Poonagalla Group"
+    full_name: "Poonagalla Group"
+    lat: "6.78"
+    lon: "81.03"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Canawarella"
+    full_name: "Canawarella"
+    lat: "6.90"
+    lon: "81.12"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Nawakiriaru Tank"
+    full_name: "Nawakiriaru Tank"
+    lat: "7.47"
+    lon: "81.72"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Mylampavaley"
+    full_name: "Mylampavaley"
+    lat: "7.76"
+    lon: "81.62"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Passikuda Estate"
+    full_name: "Passikuda Estate"
+    lat: "7.93"
+    lon: "81.55"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Thambankenie"
+    full_name: "Thambankenie"
+    lat: "7.53"
+    lon: "81.69"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Unnichchai"
+    full_name: "Unnichchai"
+    lat: "7.60"
+    lon: "81.54"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Muttur Hospital"
+    full_name: "Muttur Hospital"
+    lat: "9.77"
+    lon: "80.20"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Pulmudai-Yan Oya"
+    full_name: "Pulmudai-Yan Oya"
+    lat: "8.23"
+    lon: "80.72"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Morawewa"
+    full_name: "Morawewa"
+    lat: "8.59"
+    lon: "81.01"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Vakanari Wewa"
+    full_name: "Vakanari Wewa"
+    lat: "7.94"
+    lon: "81.44"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "vakarai-Kaddumurivu"
+    full_name: "vakarai-Kaddumurivu"
+    lat: "8.13"
+    lon: "81.43"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Rugam"
+    full_name: "Rugam"
+    lat: "7.67"
+    lon: "81.48"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "KIRAN"
+    full_name: "KIRAN"
+    lat: "7.87"
+    lon: "81.48"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "KATHIRAVELY"
+    full_name: "KATHIRAVELY"
+    lat: "8.22"
+    lon: "81.40"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Ports Authority"
+    full_name: "Ports Authority"
+    lat: "6.95"
+    lon: "79.85"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Colombo Fort"
+    full_name: "Colombo Fort"
+    lat: "6.93"
+    lon: "79.85"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Awissawella"
+    full_name: "Awissawella"
+    lat: "6.88"
+    lon: "80.12"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Hanwella"
+    full_name: "Hanwella"
+    lat: "6.88"
+    lon: "80.12"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Vincit Estate"
+    full_name: "Vincit Estate"
+    lat: "7.08"
+    lon: "80.22"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Angoda"
+    full_name: "Angoda"
+    lat: "6.93"
+    lon: "79.92"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Labugama"
+    full_name: "Labugama"
+    lat: "6.83"
+    lon: "80.18"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Mathugama"
+    full_name: "Mathugama"
+    lat: "6.50"
+    lon: "80.15"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kalatuwawa"
+    full_name: "Kalatuwawa"
+    lat: "6.85"
+    lon: "80.20"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Polatagama"
+    full_name: "Polatagama"
+    lat: "7.30"
+    lon: "80.19"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Ampara Tank"
+    full_name: "Ampara Tank"
+    lat: "7.28"
+    lon: "81.67"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Addalachena"
+    full_name: "Addalachena"
+    lat: "7.25"
+    lon: "81.85"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Padiyathalawa"
+    full_name: "Padiyathalawa"
+    lat: "7.40"
+    lon: "81.24"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Mahaoya"
+    full_name: "Mahaoya"
+    lat: "7.53"
+    lon: "81.35"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Inginiyagala"
+    full_name: "Inginiyagala"
+    lat: "7.22"
+    lon: "81.53"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Ekgaloya Tank"
+    full_name: "Ekgaloya Tank"
+    lat: "7.16"
+    lon: "81.62"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Lahugala Tank"
+    full_name: "Lahugala Tank"
+    lat: "6.88"
+    lon: "81.70"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Pannalgama"
+    full_name: "Pannalgama"
+    lat: "7.08"
+    lon: "81.63"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Deegavapi"
+    full_name: "Deegavapi"
+    lat: "7.24"
+    lon: "81.76"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Akkaraipattu Irrigation"
+    full_name: "Akkaraipattu Irrigation"
+    lat: "7.22"
+    lon: "81.85"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Panama Tank"
+    full_name: "Panama Tank"
+    lat: "6.75"
+    lon: "81.77"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Rufuskulam"
+    full_name: "Rufuskulam"
+    lat: "7.08"
+    lon: "81.78"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "ILLUKKUCHCHANAI"
+    full_name: "ILLUKKUCHCHANAI"
+    lat: "7.20"
+    lon: "81.74"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Sagamam Tank"
+    full_name: "Sagamam Tank"
+    lat: "7.08"
+    lon: "81.77"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Bentotawatte"
+    full_name: "Bentotawatte"
+    lat: "6.35"
+    lon: "80.17"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Baddegama"
+    full_name: "Baddegama"
+    lat: "6.18"
+    lon: "80.18"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Hiniduma"
+    full_name: "Hiniduma"
+    lat: "6.30"
+    lon: "80.32"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Beausejour Lower (Talaqngaha Estate)"
+    full_name: "Beausejour Lower (Talaqngaha Estate)"
+    lat: "6.15"
+    lon: "80.33"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Mapalana"
+    full_name: "Mapalana"
+    lat: "6.07"
+    lon: "80.57"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Pallegama"
+    full_name: "Pallegama"
+    lat: "6.33"
+    lon: "80.52"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Deniyaya"
+    full_name: "Deniyaya"
+    lat: "6.34"
+    lon: "80.56"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Atuela"
+    full_name: "Atuela"
+    lat: "6.25"
+    lon: "80.47"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Monrovia"
+    full_name: "Monrovia"
+    lat: "6.08"
+    lon: "80.15"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "BALAPITIYA"
+    full_name: "BALAPITIYA"
+    lat: "6.28"
+    lon: "80.05"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "BATUWANAGALA"
+    full_name: "BATUWANAGALA"
+    lat: "6.38"
+    lon: "80.38"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "PODDIWELA FARM"
+    full_name: "PODDIWELA FARM"
+    lat: "6.27"
+    lon: "80.17"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "KETENDOLA"
+    full_name: "KETENDOLA"
+    lat: "6.08"
+    lon: "80.31"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kirama (Muruthawella)"
+    full_name: "Kirama (Muruthawella)"
+    lat: "6.22"
+    lon: "80.67"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Bata Ata"
+    full_name: "Bata Ata"
+    lat: "6.10"
+    lon: "80.65"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Suriyaveva"
+    full_name: "Suriyaveva"
+    lat: "6.32"
+    lon: "81.00"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Liyangastota"
+    full_name: "Liyangastota"
+    lat: "6.23"
+    lon: "80.93"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Bandagiriya Tank"
+    full_name: "Bandagiriya Tank"
+    lat: "6.23"
+    lon: "81.15"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Lunugam Vehera"
+    full_name: "Lunugam Vehera"
+    lat: "6.33"
+    lon: "81.20"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Palatupana"
+    full_name: "Palatupana"
+    lat: "6.25"
+    lon: "81.38"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Yala"
+    full_name: "Yala"
+    lat: "6.37"
+    lon: "81.53"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Embilipitiya"
+    full_name: "Embilipitiya"
+    lat: "6.32"
+    lon: "80.85"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Tissamaharamaya"
+    full_name: "Tissamaharamaya"
+    lat: "6.28"
+    lon: "81.30"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Agunukolapelessa"
+    full_name: "Agunukolapelessa"
+    lat: "6.17"
+    lon: "80.88"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Katagamuwa"
+    full_name: "Katagamuwa"
+    lat: "7.73"
+    lon: "80.15"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Middeniya"
+    full_name: "Middeniya"
+    lat: "6.25"
+    lon: "80.76"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Tangalla water board"
+    full_name: "Tangalla water board"
+    lat: "6.03"
+    lon: "80.78"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Weerakatiya irrigation"
+    full_name: "Weerakatiya irrigation"
+    lat: "6.16"
+    lon: "80.76"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Wheragala"
+    full_name: "Wheragala"
+    lat: "6.55"
+    lon: "81.25"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Matale – PWD"
+    full_name: "Matale – PWD"
+    lat: "7.47"
+    lon: "80.62"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Delhena"
+    full_name: "Delhena"
+    lat: "7.52"
+    lon: "80.55"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Aranayeke"
+    full_name: "Aranayeke"
+    lat: "7.18"
+    lon: "80.47"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Weweltalawa"
+    full_name: "Weweltalawa"
+    lat: "7.05"
+    lon: "80.38"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Handessa"
+    full_name: "Handessa"
+    lat: "7.23"
+    lon: "80.57"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Peradeniya"
+    full_name: "Peradeniya"
+    lat: "7.27"
+    lon: "80.60"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Sogama"
+    full_name: "Sogama"
+    lat: "7.12"
+    lon: "80.62"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Loolkandura"
+    full_name: "Loolkandura"
+    lat: "7.13"
+    lon: "80.72"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kundasale"
+    full_name: "Kundasale"
+    lat: "7.27"
+    lon: "80.68"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Mahaberiyatenna"
+    full_name: "Mahaberiyatenna"
+    lat: "7.27"
+    lon: "80.77"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Madulkale"
+    full_name: "Madulkale"
+    lat: "7.38"
+    lon: "80.73"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Elkaduwa"
+    full_name: "Elkaduwa"
+    lat: "7.42"
+    lon: "80.68"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Pelwehera"
+    full_name: "Pelwehera"
+    lat: "7.90"
+    lon: "80.68"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Tanamalwila"
+    full_name: "Tanamalwila"
+    lat: "6.47"
+    lon: "81.13"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Wellawaya"
+    full_name: "Wellawaya"
+    lat: "6.73"
+    lon: "81.10"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Manaragala water supply"
+    full_name: "Manaragala water supply"
+    lat: "6.87"
+    lon: "81.35"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Handapanagala"
+    full_name: "Handapanagala"
+    lat: "6.65"
+    lon: "81.12"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kandaketiya"
+    full_name: "Kandaketiya"
+    lat: "7.17"
+    lon: "81.01"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Ulhitiya"
+    full_name: "Ulhitiya"
+    lat: "7.42"
+    lon: "81.05"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Negombo"
+    full_name: "Negombo"
+    lat: "7.20"
+    lon: "79.98"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Gampaha (Bot-Garden)"
+    full_name: "Gampaha (Bot-Garden)"
+    lat: "7.10"
+    lon: "79.98"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Marawila"
+    full_name: "Marawila"
+    lat: "7.42"
+    lon: "79.83"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Karukkuwa"
+    full_name: "Karukkuwa"
+    lat: "7.50"
+    lon: "79.83"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Horagasagara (Rukattaana Estate)"
+    full_name: "Horagasagara (Rukattaana Estate)"
+    lat: "7.57"
+    lon: "79.95"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Dummalasooriya"
+    full_name: "Dummalasooriya"
+    lat: "7.48"
+    lon: "79.90"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kamalasram      (Udu Baddawa)"
+    full_name: "Kamalasram      (Udu Baddawa)"
+    lat: "7.48"
+    lon: "79.98"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Meellawa"
+    full_name: "Meellawa"
+    lat: "7.32"
+    lon: "79.95"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kelepitimulla"
+    full_name: "Kelepitimulla"
+    lat: "7.23"
+    lon: "79.95"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Andigama"
+    full_name: "Andigama"
+    lat: "7.37"
+    lon: "80.12"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Ambepussa"
+    full_name: "Ambepussa"
+    lat: "7.28"
+    lon: "80.17"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Palampoddar"
+    full_name: "Palampoddar"
+    lat: "8.55"
+    lon: "81.07"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kantale Tank"
+    full_name: "Kantale Tank"
+    lat: "8.35"
+    lon: "80.98"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Minneriya Irrigation"
+    full_name: "Minneriya Irrigation"
+    lat: "8.05"
+    lon: "80.90"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Habarana Lodge"
+    full_name: "Habarana Lodge"
+    lat: "8.03"
+    lon: "80.75"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Bakamuna"
+    full_name: "Bakamuna"
+    lat: "7.77"
+    lon: "80.82"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Elahara"
+    full_name: "Elahara"
+    lat: "7.72"
+    lon: "80.78"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Angamedilla"
+    full_name: "Angamedilla"
+    lat: "7.85"
+    lon: "80.92"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Palugasdamana"
+    full_name: "Palugasdamana"
+    lat: "7.97"
+    lon: "81.03"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kaudulla"
+    full_name: "Kaudulla"
+    lat: "8.13"
+    lon: "80.93"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Aralaganwila"
+    full_name: "Aralaganwila"
+    lat: "7.80"
+    lon: "81.15"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Girandurukotte"
+    full_name: "Girandurukotte"
+    lat: "7.45"
+    lon: "81.02"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Diyabeduma"
+    full_name: "Diyabeduma"
+    lat: "7.93"
+    lon: "80.87"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Wellawa"
+    full_name: "Wellawa"
+    lat: "7.55"
+    lon: "80.37"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Wariyapola"
+    full_name: "Wariyapola"
+    lat: "7.63"
+    lon: "80.25"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Hindawa"
+    full_name: "Hindawa"
+    lat: "7.52"
+    lon: "80.15"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Dampalessa"
+    full_name: "Dampalessa"
+    lat: "7.42"
+    lon: "80.20"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Undugoda"
+    full_name: "Undugoda"
+    lat: "7.15"
+    lon: "80.37"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Wagolla"
+    full_name: "Wagolla"
+    lat: "7.30"
+    lon: "80.38"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Batalagoda"
+    full_name: "Batalagoda"
+    lat: "7.53"
+    lon: "80.45"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Dodangaslanda"
+    full_name: "Dodangaslanda"
+    lat: "7.57"
+    lon: "80.52"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Polontalawa"
+    full_name: "Polontalawa"
+    lat: "7.74"
+    lon: "80.09"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kuliyapitiya"
+    full_name: "Kuliyapitiya"
+    lat: "7.47"
+    lon: "80.04"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Tampana"
+    full_name: "Tampana"
+    lat: "7.45"
+    lon: "80.40"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Udaradella"
+    full_name: "Udaradella"
+    lat: "6.97"
+    lon: "80.82"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Helboda North"
+    full_name: "Helboda North"
+    lat: "7.08"
+    lon: "80.68"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "GonapitiyaMerigold"
+    full_name: "GonapitiyaMerigold"
+    lat: "7.05"
+    lon: "80.80"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Hope"
+    full_name: "Hope"
+    lat: "7.10"
+    lon: "80.75"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Wood Side"
+    full_name: "Wood Side"
+    lat: "7.27"
+    lon: "80.83"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kurunduoya"
+    full_name: "Kurunduoya"
+    lat: "7.07"
+    lon: "80.83"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Ambewela"
+    full_name: "Ambewela"
+    lat: "6.88"
+    lon: "80.80"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Holmwood"
+    full_name: "Holmwood"
+    lat: "6.85"
+    lon: "80.72"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kotagala Rosita"
+    full_name: "Kotagala Rosita"
+    lat: "6.92"
+    lon: "80.60"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Bogawanthalawa"
+    full_name: "Bogawanthalawa"
+    lat: "6.78"
+    lon: "80.70"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Watawala"
+    full_name: "Watawala"
+    lat: "6.94"
+    lon: "80.54"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Tambuttegama"
+    full_name: "Tambuttegama"
+    lat: "8.15"
+    lon: "80.30"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Mahagalkadawala"
+    full_name: "Mahagalkadawala"
+    lat: "8.07"
+    lon: "80.28"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Attaragalla Tank"
+    full_name: "Attaragalla Tank"
+    lat: "7.92"
+    lon: "80.28"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Mediyawa"
+    full_name: "Mediyawa"
+    lat: "7.88"
+    lon: "80.28"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Siyambalangamuwa"
+    full_name: "Siyambalangamuwa"
+    lat: "7.95"
+    lon: "80.45"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Dambulla Tec.College"
+    full_name: "Dambulla Tec.College"
+    lat: "7.85"
+    lon: "80.63"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kandalama"
+    full_name: "Kandalama"
+    lat: "7.87"
+    lon: "80.68"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kekirawa"
+    full_name: "Kekirawa"
+    lat: "8.03"
+    lon: "80.58"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Maradankadawala"
+    full_name: "Maradankadawala"
+    lat: "8.13"
+    lon: "80.57"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "GALGAMUWA"
+    full_name: "GALGAMUWA"
+    lat: "7.99"
+    lon: "80.29"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Karandipovval"
+    full_name: "Karandipovval"
+    lat: "8.17"
+    lon: "79.85"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Norochcholai"
+    full_name: "Norochcholai"
+    lat: "8.05"
+    lon: "79.73"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Chilaw R.D"
+    full_name: "Chilaw R.D"
+    lat: "7.58"
+    lon: "79.78"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Palugaswewa Estate"
+    full_name: "Palugaswewa Estate"
+    lat: "7.65"
+    lon: "79.87"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Horagasgara"
+    full_name: "Horagasgara"
+    lat: "7.57"
+    lon: "79.95"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kamandaluwa"
+    full_name: "Kamandaluwa"
+    lat: "7.77"
+    lon: "80.00"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Nikaweratiya"
+    full_name: "Nikaweratiya"
+    lat: "7.75"
+    lon: "80.12"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Anamaduwa"
+    full_name: "Anamaduwa"
+    lat: "7.88"
+    lon: "80.00"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Tabbowa"
+    full_name: "Tabbowa"
+    lat: "8.07"
+    lon: "79.95"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Palavi Saltern"
+    full_name: "Palavi Saltern"
+    lat: "7.98"
+    lon: "79.83"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kalutara"
+    full_name: "Kalutara"
+    lat: "6.58"
+    lon: "79.95"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Bandaragama"
+    full_name: "Bandaragama"
+    lat: "6.72"
+    lon: "80.00"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Padukka Estate"
+    full_name: "Padukka Estate"
+    lat: "6.82"
+    lon: "80.12"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Dehiwala"
+    full_name: "Dehiwala"
+    lat: "6.85"
+    lon: "79.87"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Nittambuwa"
+    full_name: "Nittambuwa"
+    lat: "7.13"
+    lon: "80.10"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kirindiwela"
+    full_name: "Kirindiwela"
+    lat: "7.03"
+    lon: "80.13"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Pasyala"
+    full_name: "Pasyala"
+    lat: "7.15"
+    lon: "80.13"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Warakapola"
+    full_name: "Warakapola"
+    lat: "7.15"
+    lon: "80.22"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Vogan  Estate"
+    full_name: "Vogan  Estate"
+    lat: "6.53"
+    lon: "80.10"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Ilubuluwa Estate"
+    full_name: "Ilubuluwa Estate"
+    lat: "6.68"
+    lon: "80.32"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kudawe"
+    full_name: "Kudawe"
+    lat: "6.43"
+    lon: "80.42"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Balangoda"
+    full_name: "Balangoda"
+    lat: "6.65"
+    lon: "80.70"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Detanagalla"
+    full_name: "Detanagalla"
+    lat: "6.73"
+    lon: "80.68"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Guruluwana"
+    full_name: "Guruluwana"
+    lat: "6.75"
+    lon: "80.43"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Maliboda"
+    full_name: "Maliboda"
+    lat: "6.88"
+    lon: "80.43"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Karagala"
+    full_name: "Karagala"
+    lat: "6.80"
+    lon: "80.35"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Moralioya"
+    full_name: "Moralioya"
+    lat: "7.03"
+    lon: "80.22"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Yatiyanthota"
+    full_name: "Yatiyanthota"
+    lat: "7.03"
+    lon: "80.29"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Anhetigama"
+    full_name: "Anhetigama"
+    lat: "6.93"
+    lon: "80.37"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Elston"
+    full_name: "Elston"
+    lat: "6.93"
+    lon: "80.17"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Ginigathhena"
+    full_name: "Ginigathhena"
+    lat: "7.10"
+    lon: "80.28"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "KUTTAPITIYA TEA FAC"
+    full_name: "KUTTAPITIYA TEA FAC"
+    lat: "6.64"
+    lon: "80.56"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "NIWITIGALA TEA FAC"
+    full_name: "NIWITIGALA TEA FAC"
+    lat: "6.60"
+    lon: "80.46"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "DELWALA TEA FAC"
+    full_name: "DELWALA TEA FAC"
+    lat: "6.52"
+    lon: "80.47"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "AYAGAMA"
+    full_name: "AYAGAMA"
+    lat: "6.64"
+    lon: "80.31"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Castlereigh"
+    full_name: "Castlereigh"
+    lat: "6.87"
+    lon: "80.57"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Norton"
+    full_name: "Norton"
+    lat: "6.92"
+    lon: "80.52"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Maussakele"
+    full_name: "Maussakele"
+    lat: "6.85"
+    lon: "80.55"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Canyon"
+    full_name: "Canyon"
+    lat: "6.88"
+    lon: "80.53"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Laksapana"
+    full_name: "Laksapana"
+    lat: "6.90"
+    lon: "80.52"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Upper kotmalee"
+    full_name: "Upper kotmalee"
+    lat: "6.95"
+    lon: "80.66"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kotmalee"
+    full_name: "Kotmalee"
+    lat: "7.08"
+    lon: "80.57"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Victoriya"
+    full_name: "Victoriya"
+    lat: "7.24"
+    lon: "80.78"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Randenigala"
+    full_name: "Randenigala"
+    lat: "7.12"
+    lon: "80.87"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Rantambe"
+    full_name: "Rantambe"
+    lat: "7.20"
+    lon: "80.93"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Bowatenna"
+    full_name: "Bowatenna"
+    lat: "7.65"
+    lon: "80.65"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Ukuwela"
+    full_name: "Ukuwela"
+    lat: "7.40"
+    lon: "80.65"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Samanala Wewa"
+    full_name: "Samanala Wewa"
+    lat: "6.98"
+    lon: "80.47"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kukuleganga"
+    full_name: "Kukuleganga"
+    lat: "6.51"
+    lon: "80.36"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Maskeliya"
+    full_name: "Maskeliya"
+    lat: "6.83"
+    lon: "80.56"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Neboda"
+    full_name: "Neboda"
+    lat: "6.60"
+    lon: "80.09"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Pulmudain(yan oya)"
+    full_name: "Pulmudain(yan oya)"
+    lat: "8.23"
+    lon: "80.72"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kuchcheweli"
+    full_name: "Kuchcheweli"
+    lat: "8.82"
+    lon: "81.09"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "SL NAVY TCO"
+    full_name: "SL NAVY TCO"
+    lat: "8.55"
+    lon: "81.23"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "ACHCHIWELI"
+    full_name: "ACHCHIWELI"
+    lat: "9.74"
+    lon: "80.07"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "PEDURUTUDUWA"
+    full_name: "PEDURUTUDUWA"
+    lat: "9.79"
+    lon: "80.22"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "NAGADEEPA"
+    full_name: "NAGADEEPA"
+    lat: "9.61"
+    lon: "79.77"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "ALAMPIL"
+    full_name: "ALAMPIL"
+    lat: "9.18"
+    lon: "80.85"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "WELLIPUNAM"
+    full_name: "WELLIPUNAM"
+    lat: "9.79"
+    lon: "80.24"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "WATER RESOURCE BOARD"
+    full_name: "WATER RESOURCE BOARD"
+    lat: "9.66"
+    lon: "80.03"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Jaffna irrigation"
+    full_name: "Jaffna irrigation"
+    lat: "9.70"
+    lon: "80.03"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "DELFT"
+    full_name: "DELFT"
+    lat: "9.52"
+    lon: "79.68"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "KILINOCHCHI"
+    full_name: "KILINOCHCHI"
+    lat: "9.38"
+    lon: "80.38"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Oddusudan"
+    full_name: "Oddusudan"
+    lat: "9.15"
+    lon: "80.65"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Elephant pass"
+    full_name: "Elephant pass"
+    lat: "9.52"
+    lon: "80.41"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Chavakachcheri"
+    full_name: "Chavakachcheri"
+    lat: "9.66"
+    lon: "80.13"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Thellipallei"
+    full_name: "Thellipallei"
+    lat: "9.78"
+    lon: "79.98"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Ampan"
+    full_name: "Ampan"
+    lat: "9.72"
+    lon: "80.27"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Akkarayan"
+    full_name: "Akkarayan"
+    lat: "9.32"
+    lon: "80.16"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "NEDUNKERNI"
+    full_name: "NEDUNKERNI"
+    lat: "9.05"
+    lon: "80.65"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "OMANTHAI"
+    full_name: "OMANTHAI"
+    lat: "8.87"
+    lon: "80.50"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "SHETTIKULAM"
+    full_name: "SHETTIKULAM"
+    lat: "8.65"
+    lon: "80.31"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "ULUKKULAM"
+    full_name: "ULUKKULAM"
+    lat: "8.66"
+    lon: "80.41"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Anuradhapura"
+    full_name: "Anuradhapura"
+    lat: "8.33"
+    lon: "80.38"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Badulla"
+    full_name: "Badulla"
+    lat: "6.98"
+    lon: "81.05"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Bandarawela"
+    full_name: "Bandarawela"
+    lat: "6.82"
+    lon: "80.97"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Batticaloa"
+    full_name: "Batticaloa"
+    lat: "7.72"
+    lon: "81.33"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Colombo"
+    full_name: "Colombo"
+    lat: "6.90"
+    lon: "79.87"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Galle"
+    full_name: "Galle"
+    lat: "6.03"
+    lon: "80.22"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Hambanthota "
+    full_name: "Hambanthota "
+    lat: "6.12"
+    lon: "81.13"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Jaffna"
+    full_name: "Jaffna"
+    lat: "9.70"
+    lon: "80.03"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Monaragala "
+    full_name: "Monaragala "
+    lat: "6.50"
+    lon: "81.30"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Katugasthota"
+    full_name: "Katugasthota"
+    lat: "7.33"
+    lon: "80.63"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Katunayake"
+    full_name: "Katunayake"
+    lat: "7.17"
+    lon: "79.88"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Kurunagala"
+    full_name: "Kurunagala"
+    lat: "7.47"
+    lon: "80.35"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Maha Illuppallama"
+    full_name: "Maha Illuppallama"
+    lat: "8.12"
+    lon: "80.47"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Mannar"
+    full_name: "Mannar"
+    lat: "8.98"
+    lon: "79.90"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Polonnaruwa"
+    full_name: "Polonnaruwa"
+    lat: "7.87"
+    lon: "81.05"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Nuwara Eliya"
+    full_name: "Nuwara Eliya"
+    lat: "6.97"
+    lon: "80.77"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Pothuvil"
+    full_name: "Pothuvil"
+    lat: "6.88"
+    lon: "81.83"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Puttalam"
+    full_name: "Puttalam"
+    lat: "8.03"
+    lon: "79.83"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Rathmalana"
+    full_name: "Rathmalana"
+    lat: "6.67"
+    lon: "79.88"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Rathnapura"
+    full_name: "Rathnapura"
+    lat: "6.72"
+    lon: "80.38"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Trincomalee"
+    full_name: "Trincomalee"
+    lat: "8.58"
+    lon: "81.25"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Vavuniya"
+    full_name: "Vavuniya"
+    lat: "8.75"
+    lon: "80.50"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Mattla"
+    full_name: "Mattla"
+    lat: "6.31"
+    lon: "81.11"
+    station_type: "MET"
+
+- model: obs_data.station
+  fields:
+    name: "Wathupitiwala Base Hospital"
+    full_name: "Wathupitiwala Base Hospital"
+    lat: "7.12"
+    lon: "80.11"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Madolthenna Estate"
+    full_name: "Madolthenna Estate"
+    lat: "7.08"
+    lon: "80.18"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Dunumale Estate"
+    full_name: "Dunumale Estate"
+    lat: "7.14"
+    lon: "80.21"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Etana Estate, Warakapola"
+    full_name: "Etana Estate, Warakapola"
+    lat: "7.22"
+    lon: "80.19"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Mahayaya Area Estate, Dansalwaththa"
+    full_name: "Mahayaya Area Estate, Dansalwaththa"
+    lat: "7.18"
+    lon: "80.12"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Algama Central College"
+    full_name: "Algama Central College"
+    lat: "7.16"
+    lon: "80.16"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Gampaha Technical College"
+    full_name: "Gampaha Technical College"
+    lat: "7.08"
+    lon: "80.03"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Divulapitiya Divisional Secretariate"
+    full_name: "Divulapitiya Divisional Secretariate"
+    lat: "7.23"
+    lon: "80.02"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Siyane National College of Education"
+    full_name: "Siyane National College of Education"
+    lat: "7.14"
+    lon: "80.07"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Melkopiwatta"
+    full_name: "Melkopiwatta"
+    lat: "7.18"
+    lon: "79.93"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "District Hospital, Meegahatenna"
+    full_name: "District Hospital, Meegahatenna"
+    lat: "6.44"
+    lon: "80.20"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Eladuwa Estate"
+    full_name: "Eladuwa Estate"
+    lat: "6.51"
+    lon: "80.05"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "NARA"
+    full_name: "NARA"
+    lat: "6.98"
+    lon: "79.87"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Kesbewa Divisional Secretariat"
+    full_name: "Kesbewa Divisional Secretariat"
+    lat: "6.80"
+    lon: "79.92"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Land Commissioner's General Department"
+    full_name: "Land Commissioner's General Department"
+    lat: "6.90"
+    lon: "79.92"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Bogoda Tea Factory"
+    full_name: "Bogoda Tea Factory"
+    lat: "6.32"
+    lon: "80.52"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Andaradeniya Tea Factory"
+    full_name: "Andaradeniya Tea Factory"
+    lat: "6.36"
+    lon: "80.59"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Sirikandura Estate"
+    full_name: "Sirikandura Estate"
+    lat: "6.13"
+    lon: "80.14"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Hegoda Pump House"
+    full_name: "Hegoda Pump House"
+    lat: "6.09"
+    lon: "80.17"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Devitura Estate"
+    full_name: "Devitura Estate"
+    lat: "6.25"
+    lon: "80.15"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Ellakanda Watta"
+    full_name: "Ellakanda Watta"
+    lat: "6.21"
+    lon: "80.23"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "New Marakanda Tea Factory"
+    full_name: "New Marakanda Tea Factory"
+    lat: "6.28"
+    lon: "80.27"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Duli Ella Tea Factory"
+    full_name: "Duli Ella Tea Factory"
+    lat: "6.39"
+    lon: "80.39"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Dellawa Tea Factory"
+    full_name: "Dellawa Tea Factory"
+    lat: "6.32"
+    lon: "80.43"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Ransavi Tea Factory"
+    full_name: "Ransavi Tea Factory"
+    lat: "6.28"
+    lon: "80.41"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Gurudiyapotha Tea Factory"
+    full_name: "Gurudiyapotha Tea Factory"
+    lat: "6.34"
+    lon: "80.38"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Kanneliya Forest Office"
+    full_name: "Kanneliya Forest Office"
+    lat: "6.25"
+    lon: "80.34"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Menikkanda Tea Factory"
+    full_name: "Menikkanda Tea Factory"
+    lat: "6.07"
+    lon: "80.32"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Devagiri Tea Factory"
+    full_name: "Devagiri Tea Factory"
+    lat: "6.10"
+    lon: "80.32"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Upper Stockland Estate"
+    full_name: "Upper Stockland Estate"
+    lat: "6.19"
+    lon: "80.35"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Ivy Hills Tea Factory"
+    full_name: "Ivy Hills Tea Factory"
+    lat: "6.18"
+    lon: "80.30"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Devidson Tea Factory"
+    full_name: "Devidson Tea Factory"
+    lat: "6.12"
+    lon: "80.28"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Kiriella"
+    full_name: "Kiriella"
+    lat: "6.71"
+    lon: "80.29"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Niriella"
+    full_name: "Niriella"
+    lat: "6.61"
+    lon: "80.37"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Watapotha"
+    full_name: "Watapotha"
+    lat: "6.59"
+    lon: "80.49"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Kalawana"
+    full_name: "Kalawana"
+    lat: "6.52"
+    lon: "80.38"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Gilimale"
+    full_name: "Gilimale"
+    lat: "6.74"
+    lon: "80.45"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Kudawa"
+    full_name: "Kudawa"
+    lat: "6.75"
+    lon: "80.49"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Sri Palabaddala"
+    full_name: "Sri Palabaddala"
+    lat: "6.79"
+    lon: "80.44"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Theppanawa"
+    full_name: "Theppanawa"
+    lat: "6.77"
+    lon: "80.32"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Laksakanda"
+    full_name: "Laksakanda"
+    lat: "6.83"
+    lon: "80.40"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Uda Haupe, Madampe"
+    full_name: "Uda Haupe, Madampe"
+    lat: "6.56"
+    lon: "80.53"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Ekkarella, Opanayake"
+    full_name: "Ekkarella, Opanayake"
+    lat: "6.59"
+    lon: "80.65"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Keeragala, Kuruvita"
+    full_name: "Keeragala, Kuruvita"
+    lat: "6.80"
+    lon: "80.36"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Erepola, Eheliyagoda"
+    full_name: "Erepola, Eheliyagoda"
+    lat: "6.81"
+    lon: "80.25"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Vithanakanda Estate"
+    full_name: "Vithanakanda Estate"
+    lat: "6.53"
+    lon: "80.47"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Pimbura Hospital"
+    full_name: "Pimbura Hospital"
+    lat: "6.58"
+    lon: "80.16"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Morapitiya Maha Vidyalaya"
+    full_name: "Morapitiya Maha Vidyalaya"
+    lat: "6.54"
+    lon: "80.27"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "IPSOTSL (camp)"
+    full_name: "IPSOTSL (camp)"
+    lat: "6.62"
+    lon: "80.28"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Vogan Estate"
+    full_name: "Vogan Estate"
+    lat: "6.54"
+    lon: "80.10"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Keselhenawa Police Station"
+    full_name: "Keselhenawa Police Station"
+    lat: "6.65"
+    lon: "80.06"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Bandaragama Government Farm"
+    full_name: "Bandaragama Government Farm"
+    lat: "6.71"
+    lon: "79.99"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Fruit Research and Development Institute, Horana"
+    full_name: "Fruit Research and Development Institute, Horana"
+    lat: "6.75"
+    lon: "80.06"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Isipathana Primary School, Arakawila"
+    full_name: "Isipathana Primary School, Arakawila"
+    lat: "6.81"
+    lon: "80.14"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Karandana Dammulla Sampath Tea Factory"
+    full_name: "Karandana Dammulla Sampath Tea Factory"
+    lat: "6.78"
+    lon: "80.22"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Halwathura Estate"
+    full_name: "Halwathura Estate"
+    lat: "6.72"
+    lon: "80.19"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Yattapatha School"
+    full_name: "Yattapatha School"
+    lat: "6.40"
+    lon: "80.30"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "WKK Lanka Co (PVT) Ltd"
+    full_name: "WKK Lanka Co (PVT) Ltd"
+    lat: "6.59"
+    lon: "80.07"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Thalduwa Estate"
+    full_name: "Thalduwa Estate"
+    lat: "6.98"
+    lon: "80.22"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Deraniyagala Divisional Secretariate"
+    full_name: "Deraniyagala Divisional Secretariate"
+    lat: "6.93"
+    lon: "80.34"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "W.K.K. Engineering, Hanwella"
+    full_name: "W.K.K. Engineering, Hanwella"
+    lat: "6.87"
+    lon: "80.10"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Halgolla Tea Factory"
+    full_name: "Halgolla Tea Factory"
+    lat: "7.06"
+    lon: "80.36"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Kandal Oya Estate"
+    full_name: "Kandal Oya Estate"
+    lat: "7.07"
+    lon: "80.42"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Kalupahana Estate"
+    full_name: "Kalupahana Estate"
+    lat: "7.09"
+    lon: "80.38"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Galigamuwa Pradeshiya Sabha"
+    full_name: "Galigamuwa Pradeshiya Sabha"
+    lat: "7.19"
+    lon: "80.30"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Yatiyantota Pradeshiya Sabha"
+    full_name: "Yatiyantota Pradeshiya Sabha"
+    lat: "7.04"
+    lon: "80.29"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Dehiowita Divisional Secretariate"
+    full_name: "Dehiowita Divisional Secretariate"
+    lat: "6.98"
+    lon: "80.24"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Selathalaramaya, Kirindiwela"
+    full_name: "Selathalaramaya, Kirindiwela"
+    lat: "7.03"
+    lon: "80.17"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Salawa Estate"
+    full_name: "Salawa Estate"
+    lat: "6.93"
+    lon: "80.11"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Ayr Estate"
+    full_name: "Ayr Estate"
+    lat: "6.85"
+    lon: "80.15"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Penrith Estate"
+    full_name: "Penrith Estate"
+    lat: "6.95"
+    lon: "80.20"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Pambegama Tea Factory"
+    full_name: "Pambegama Tea Factory"
+    lat: "6.89"
+    lon: "80.18"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Dikoya Estate Factory"
+    full_name: "Dikoya Estate Factory"
+    lat: "6.88"
+    lon: "80.60"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Dunkeld Estate Factory"
+    full_name: "Dunkeld Estate Factory"
+    lat: "6.86"
+    lon: "80.57"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Tientsin Bangalow"
+    full_name: "Tientsin Bangalow"
+    lat: "6.81"
+    lon: "80.66"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Glentilt Factory"
+    full_name: "Glentilt Factory"
+    lat: "6.84"
+    lon: "80.34"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Laxapana Tea Factory"
+    full_name: "Laxapana Tea Factory"
+    lat: "6.83"
+    lon: "80.53"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Alton Estate Factory"
+    full_name: "Alton Estate Factory"
+    lat: "6.79"
+    lon: "80.62"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Hapugastenna Estate"
+    full_name: "Hapugastenna Estate"
+    lat: "6.87"
+    lon: "80.53"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "W.K.K. Engineering ,Wadakada"
+    full_name: "W.K.K. Engineering ,Wadakada"
+    lat: "7.40"
+    lon: "80.27"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "WKK Lanka Co (PVT) Ltd,Oddusudan"
+    full_name: "WKK Lanka Co (PVT) Ltd,Oddusudan"
+    lat: "9.14"
+    lon: "80.63"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Irrigation Quarters, Iyankankulama"
+    full_name: "Irrigation Quarters, Iyankankulama"
+    lat: "9.21"
+    lon: "80.34"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Divisional Secretarial ,welioya"
+    full_name: "Divisional Secretarial ,welioya"
+    lat: "8.99"
+    lon: "80.77"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Agrarian Service Center ,Alapilli"
+    full_name: "Agrarian Service Center ,Alapilli"
+    lat: "9.18"
+    lon: "80.85"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Irrigation Quarters, Udaiyaarkaddu"
+    full_name: "Irrigation Quarters, Udaiyaarkaddu"
+    lat: "9.36"
+    lon: "80.60"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Irrigation Engineer office, Vavunikulam"
+    full_name: "Irrigation Engineer office, Vavunikulam"
+    lat: "9.10"
+    lon: "80.34"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Athuraliya DS Office"
+    full_name: "Athuraliya DS Office"
+    lat: "6.10"
+    lon: "80.48"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Agrarian Service Centre, Akuressa"
+    full_name: "Agrarian Service Centre, Akuressa"
+    lat: "6.11"
+    lon: "80.47"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Belmont Tea Factory"
+    full_name: "Belmont Tea Factory"
+    lat: "6.18"
+    lon: "80.47"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Mahendra Tea Factory"
+    full_name: "Mahendra Tea Factory"
+    lat: "6.24"
+    lon: "80.48"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Co-op Lanka Tea Factory"
+    full_name: "Co-op Lanka Tea Factory"
+    lat: "6.27"
+    lon: "80.53"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Deniyaya Tea Estate"
+    full_name: "Deniyaya Tea Estate"
+    lat: "6.34"
+    lon: "80.56"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Derangala Tea Factory"
+    full_name: "Derangala Tea Factory"
+    lat: "6.26"
+    lon: "80.45"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Wilpita Estate"
+    full_name: "Wilpita Estate"
+    lat: "6.21"
+    lon: "80.34"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Makandura Tea Factory"
+    full_name: "Makandura Tea Factory"
+    lat: "6.15"
+    lon: "80.55"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Kadduwa - Siriwardhanaramaya"
+    full_name: "Kadduwa - Siriwardhanaramaya"
+    lat: "6.02"
+    lon: "80.31"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "National Cinnamon Research Center"
+    full_name: "National Cinnamon Research Center"
+    lat: "6.03"
+    lon: "80.56"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Diddenipotha Tea Factory"
+    full_name: "Diddenipotha Tea Factory"
+    lat: "6.16"
+    lon: "80.58"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Ehelakanda Tea Factory"
+    full_name: "Ehelakanda Tea Factory"
+    lat: "6.21"
+    lon: "80.60"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+- model: obs_data.station
+  fields:
+    name: "Arbour Valley Tea Factory"
+    full_name: "Arbour Valley Tea Factory"
+    lat: "6.33"
+    lon: "80.62"
+    station_type: "MET"
+    station_category: "AUTO" 
+
+

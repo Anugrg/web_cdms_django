@@ -1,0 +1,180 @@
+/*
+* Style patch for leaflet forecast map
+*/
+.leaflet-popup-content-wrapper{
+    border-radius: 5px;
+    margin: 0;
+    padding: 2px 5px;
+    overflow:hidden;
+    background:black;
+}
+.leaflet-popup-content{
+    margin: 0;
+    padding: 0;
+    line-height: 1.25rem;
+}
+.leaflet-popup-tip{
+    background: black;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip{
+    box-shadow: none;
+}
+
+.leaflet-popup-content p{
+    margin:0;
+    padding:0;
+    text-align:center;
+    color:#fff;
+    font-family: "Roboto", "Helvetica Neue", "Helvetica", sans-serif;
+    font-size:12px;
+
+}
+
+.close_popup{
+    font-size: 1.25rem;
+}
+
+.close_popup:hover::after{
+    color: rgb(158, 0, 0);
+} 
+
+.close_popup::after{
+    content: "\f057";
+
+    display: block;
+    height: 1.25rem;
+    width: 1.25rem;
+    text-align: center;
+    border-radius: 50%;
+    background: rgb(255, 255, 255);
+    font-family: "Font Awesome 5 Pro";
+    position: absolute;
+    color: rgb(0, 0, 0);
+    transform: translateX(-50%) translateY(-50%);
+    cursor: pointer;
+}
+
+
+
+.leaflet-popup-close-button{
+    display: none;
+}
+
+.leaflet-marker-icon{
+
+    /* border-radius: 50%; */
+    /* background: #fff; */
+}
+
+.leaflet-marker-icon:hover{
+    border-radius: 5px;
+    background: rgb(47 129 203 / 60%);
+    box-shadow: 0 0 1px black;
+}
+
+.fpn{
+    font-size: 2.5em !important;
+    padding: 0 !important;
+    line-height:60px;
+    text-align: center;
+}
+.fpn:hover{
+    color: #2a62cd;
+    transition: color 0.3s ease-out;
+}
+.irs--square .irs-grid-text{
+    color:black;
+    font-family:"Roboto", "Helvetica Neue", "Helvetica", sans-serif;
+}
+.irs-handle, .irs-single{
+    cursor: pointer;
+}
+.irs-single{
+    font-family:"Roboto", "Helvetica Neue", "Helvetica", sans-serif;
+    background-color: #fff !important;;
+    color: black !important;
+    border-radius: 3px;
+    box-shadow: 0 0 2px black;
+}
+.irs--square .irs-grid-pol{
+    background-color: #6b6b6b;
+}
+.irs--square .irs-line{
+    background-color: #6b6b6b;
+}
+.irs--square .irs-handle{
+    transform: none !important;
+}
+
+#cbar{
+    font-family:monospace;
+    width:350px;
+    border-radius:20px;
+    box-shadow: 0 0 3px black;
+    text-shadow:0 0 3px white;
+    text-align: center;
+}
+
+#params{
+    background: black;
+    padding:0;
+    margin:0;
+    color: white;
+    /* box-shadow: 0 0 3px black; */
+    /* overflow: hidden; */
+    font-size: 1.2rem;
+    position:absolute;
+    right:0;
+    /* top:50%; */
+    /* transform:translateY(-50%) */
+}
+
+#params p{
+    cursor: pointer;
+    padding: 8px 5px; 
+    margin: 0;
+}
+
+#params p:hover{
+    background:#0062cc;
+    color: white;
+}
+
+#params p::after{
+    font-size:14px;
+    background: black;
+}
+
+.parameter-btn{
+    text-align: center;
+}
+
+.active_var, .active_quant{
+    background:#5cabff !important;
+    color:white;
+}
+
+#forecast_meta{
+    background: white; 
+}
+
+
+.quantile_btn{
+
+    font-size: 12px;
+    background: black;
+    /* border: 1px solid white; */
+    border-radius: 5px;
+    /* margin: 0 5px; */
+    cursor: pointer;
+    color:white; 
+    font-family:monospace;
+    border-spacing: 5px;
+    padding: 2px 7px;
+}
+
+.quantile_btn:hover{
+    background:#0062cc !important;
+    color:white;
+} 

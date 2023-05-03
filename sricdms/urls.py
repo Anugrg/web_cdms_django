@@ -1,0 +1,35 @@
+"""sricdms URL Configuration
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/3.2/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path, include
+
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', include('home.urls')), 
+    path('observations/', include('obs_data.urls')),
+    path('forecasts/', include('forecast_data.urls')),
+    path('user/', include('user_auth.urls')),
+    path('spatial/', include('spatial_data_gen.urls')),
+    path('bufr/', include('bufr_data.urls')),
+    path('dqc/', include('dataqc.urls'))
+]
+
+
+# django admin settings
+admin.site.site_header = "Sri Lanka CDMS Administration"
+admin.site.site_title = "SL CDMS Admin"
+admin.site.index_title = "Welcome to Sri Lanka Adminsistration Site"

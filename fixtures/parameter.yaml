@@ -1,0 +1,192 @@
+# this table should be fixed throughout systems
+
+#[met parameters]
+- model: obs_data.parameter
+  pk: 1
+  fields:
+    name: "temp"
+    full_name: "Temperature"
+    unit: "°C"
+    parameter_type: "INST"
+
+
+- model: obs_data.parameter
+  pk: 2
+  fields:
+    name: "tmin"
+    full_name: "Minimum Temperature"
+    unit: "°C"
+    parameter_type: "MIN"
+
+- model: obs_data.parameter
+  pk: 3
+  fields:
+    name: "tmax"
+    full_name: "Maximum Temperature"
+    unit: "°C"
+    parameter_type: "MAX"
+
+- model: obs_data.parameter
+  pk: 4
+  fields:
+    name: "tavg"
+    full_name: "Average Temperature"
+    unit: "°C"
+    parameter_type: "AVG"
+
+- model: obs_data.parameter
+  pk: 5
+  fields:
+    name: "rh"
+    full_name: "Relative Humidity"
+    unit: "%"
+    parameter_type: "INST"
+
+
+- model: obs_data.parameter
+  pk: 6
+  fields:
+    name: "rhmin"
+    full_name: "Minimum Relative Humidity"
+    unit: "%"
+    parameter_type: "MIN"
+
+
+- model: obs_data.parameter
+  pk: 7
+  fields:
+    name: "rhmax"
+    full_name: "Maximum Relative Humidity"
+    unit: "%"
+    parameter_type: "MAX"
+
+
+- model: obs_data.parameter
+  pk: 8
+  fields:
+    name: "rhavg"
+    full_name: "Average Relative Humidity"
+    unit: "%"
+    parameter_type: "AVG"
+
+- model: obs_data.parameter
+  pk: 9
+  fields:
+    name: "rainfall"
+    full_name: "Rainfall"
+    unit: "mm"
+    parameter_type: "ACCM"
+
+- model: obs_data.parameter
+  pk: 10
+  fields:
+    name: "slp"
+    full_name: "Sea Level Pressure"
+    unit: "hpa"
+    parameter_type: "INST"
+
+- model: obs_data.parameter
+  pk: 11
+  fields:
+    name: "slpmin"
+    full_name: "Minimum Sea Level Pressure"
+    unit: "hpa"
+    parameter_type: "MIN"
+
+- model: obs_data.parameter
+  pk: 12
+  fields:
+    name: "slpmax"
+    full_name: "Maximum Sea Level Pressure"
+    unit: "hpa"
+    parameter_type: "MAX"
+
+- model: obs_data.parameter
+  pk: 13
+  fields:
+    name: "slpavg"
+    full_name: "Average Sea Level Pressure"
+    unit: "hpa"
+    parameter_type: "AVG"
+
+- model: obs_data.parameter
+  pk: 14
+  fields:
+    name: "wspd"
+    full_name: "Wind Speed"
+    unit: "kmph"
+    parameter_type: "INST"
+
+- model: obs_data.parameter
+  pk: 15
+  fields:
+    name: "wspdmin"
+    full_name: "Minimum Wind Speed"
+    unit: "kmph"
+    parameter_type: "MIN"
+
+- model: obs_data.parameter
+  pk: 16
+  fields:
+    name: "wspdmax"
+    full_name: "Maxmimum Wind Speed"
+    unit: "kmph"
+    parameter_type: "MAX"
+
+- model: obs_data.parameter
+  pk: 17
+  fields:
+    name: "wspdavg"
+    full_name: "Average Wind Speed"
+    unit: "kmph"
+    parameter_type: "AVG"
+
+- model: obs_data.parameter
+  pk: 18
+  fields:
+    name: "wdir"
+    full_name: "Wind Direction"
+    unit: "°N"
+    parameter_type: "INST"
+
+- model: obs_data.parameter
+  pk: 19
+  fields:
+    name: "srad"
+    full_name: "Solar Radiation"
+    unit: "w/m2"
+    parameter_type: "INST"
+
+- model: obs_data.parameter
+  pk: 20
+  fields:
+    name: "tdew"
+    full_name: "Dew Point Temperature"
+    unit: "°C"
+    parameter_type: "INST"
+
+- model: obs_data.parameter
+  pk: 21
+  fields:
+    name: "smois"
+    full_name: "Soil Moisture"
+    unit: "%"
+    parameter_type: "INST"
+
+# [hydro parameters]
+
+- model: obs_data.parameter
+  pk: 22
+  fields:
+    name: "wl"
+    full_name: "Water Level"
+    unit: "m"
+    parameter_type: "INST"
+
+- model: obs_data.parameter
+  pk: 23
+  fields:
+    name: "q"
+    full_name: "Discharge"
+    unit: "m3/s"
+    parameter_type: "INST"

@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css"/>
+    <link rel="stylesheet" href="{% static 'lib/ion-rangeslider/css/ion.rangeSlider.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/leaflet_forecast_map_patch.css' %}"/>
+    <link rel="stylesheet" href="https://unpkg.com/microtip/microtip.css" />
+
+    <style>
+    #full_screen_icon{
+        font-size: 14px;
+    }
+
+    .full_screen_card_prop{
+        position: fixed !important;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 999;
+    }
+
+    .leaflet-container.leaflet-fullscreen-on {
+        width:100%!important;
+        height:100%!important;
+    }
+    
+    </style>
+{%endblock%}
+
+
+
+{% block page_name %} Forecasts {% endblock %}
+{% block page_title %} Forecasts {% endblock %}
+
+
+{% block content%}
+
+<div class="row">
+
+    <div class="nav-wrapper position-relative end-0">
+      <div class="col-6">
+        <ul class="nav nav-pills nav-fill p-" role="tablist">
+          <li class="nav-item">
+              <a  id="fmap" class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="{% url 'forecast.forecast_view'%}" role="tab" aria-controls="profile" aria-selected="true">
+              Forecast Map
+              </a>
+           </li>
+          <li class="nav-item">
+             <a id="ncf" class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="{%url 'forecast.forecast_netcdf'%}" role="tab" aria-controls="profile" aria-selected="true">
+             Download Raw Netcdf
+             </a>
+          </li>
+          <li class="nav-item">
+             <a id="fgraph" class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#dashboard-tabs-simple" role="tab" aria-controls="dashboard" aria-selected="false">
+             Download Forecast Graph
+             </a>
+          </li>
+        </ul>
+  
+      </div>
+  
+    </div>
+  </div>
+
+    {% block forecast_content %}
+
+    {% endblock %}
+
+{% endblock %}
+
+{% block extra_scripts %}
+
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    <script src="https://unpkg.com/mm-jsr/build/index.js"></script>
+    <script src="{%static 'lib/ion-rangeslider/js/ion.rangeSlider.min.js'%}"></script>
+    <script src="{%static 'js/dataex-rasterlayer.min.js'%}"></script>
+
+    <script>
+        var element = document.getElementById("fcst-nav");
+        element.classList.add("active");
+    </script>
+    {% block forecast_scripts_extra %}
+
+    {% endblock %}
+    
+    
+
+
+{%endblock%}

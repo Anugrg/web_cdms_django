@@ -1,0 +1,520 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/litepicker/dist/css/litepicker.css"/>
+    <link rel="stylesheet" href="{% static 'lib/nice-select2/css/nice-select2.css' %}">
+    <style>
+
+    </style>
+{% endblock %}
+
+
+{% block page_name %} Observations {% endblock %}
+{% block page_title %} Observations {% endblock %}
+
+
+{% block content %}
+
+<div class="card z-index-3 mt-2">
+  <div class="card-body p-1">
+    <div class="row mt-1 p-2">
+      <div class="col-md-5">
+        <p  class="mg-b-10">Select Station</p>
+        <select class="form-control" id="station" name="station_id" placeholder="Select Station" required>
+          {% for row in stations%}
+              <option value="{{row.id}}">{{row.name}}</option>
+          {% endfor %}
+
+        </select>
+      </div>
+      <div class="col-md-5">
+        <p class="mg-b-10">Select Parameter</p>
+        <select class="form-control" id="parameter">
+
+        </select>
+
+          
+      </div>
+      <!-- <div class="col-md-2">
+        <p class="mg-b-10">Select Date Range</p>
+        <input type="text" id="daterange" class="form-control daterange br-5" readonly>
+            
+        </input>
+
+
+      </div> -->
+
+      <div class="col-md-2">
+        <p  class="mg-b-10">&nbsp;</p>
+        <p id="view" class=" form-control btn btn-primary br-5">View</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div id="stn-map-row" class="row mt-4" style="display: None;">
+  <div class="col-lg-6 mb-lg-0 mb-4">
+    <div class="card z-index-2">
+      <div class="card-body p-3" >
+        <div id="map" style="height: 443px;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="card mb-4">
+      <div class="card-header pb-0">
+        <h6>Station Overview</h6>
+      </div>
+      <div class="card-body px-0 pt-0 pb-2">
+          <div class="table-responsive p-3">
+              <table class="table align-items-center mb-0">
+                <tr>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
+                  <td>
+                    <div class="d-flex px-2 py-1">
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 id="stn_name" class="mb-0 text-sm"></h6>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Type</th>
+                  <td>
+                    <div class="d-flex px-2 py-1">
+
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 id="type" class="mb-0 text-sm">Manual</h6>
+
+                      </div>
+                    </div>
+        
+                  </td>
+                </tr>
+                <tr>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Local ID</th>
+                  <td>
+                    <div class="d-flex px-2 py-1">
+
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 id="local_id" class="mb-0 text-sm"></h6>
+
+                      </div>
+                    </div>
+        
+                  </td>
+                </tr>
+                <tr>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">WMO ID</th>
+                      <td>
+                        <div class="d-flex px-2 py-1">
+          
+                          <div class="d-flex flex-column justify-content-center">
+                            <h6 id="wmo_id" class="mb-0 text-sm"></h6>
+          
+                          </div>
+                        </div>
+            
+                      </td>
+                </tr>
+                <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Location</th>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+        
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 id="location" class="mb-0 text-sm"></h6>
+        
+                        </div>
+                      </div>
+          
+                    </td>
+                </tr>
+                <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Available Parameters</th>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+        
+                        <div class="d-flex flex-column justify-content-center">
+                          <span class="badge badge-sm bg-gradient-success"><h6 id="params" class="mb-0 text-sm">rainfall</h6></span>
+        
+                        </div>
+                      </div>
+          
+                    </td>
+                </tr>
+                <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Availabe Period</th>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+        
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 id="period" class="mb-0 text-sm"></h6>
+        
+                        </div>
+                      </div>
+          
+                    </td>
+                </tr>
+                <tr>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Missing Data Count</th>
+                    <td>
+                      <div class="d-flex px-2 py-1">
+                        <div class="d-flex flex-column justify-content-center">
+                          <h6 id="miss_count" class="mb-0 text-sm"></h6>
+                        </div>
+                      </div>
+                    </td>
+                </tr>
+            </table>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<div id="chart-row" class="row mt-4" style="display:None;">
+  <div id="chart-card" class="card z-index-2">
+    <div class="card-header">
+
+      <div class="row mt-4">
+        <div class="col-2">
+          <p class="mg-b-10">Select Date Range</p>
+          <input type="text" id="daterange" class="form-control daterange br-5" readonly>
+          </input>
+        </div>
+        <div class="col-2">
+          <p  class="mg-b-10">&nbsp;</p>
+          <p id="gen-chart" class=" form-control btn btn-primary br-5">Generate</p>
+        </div>
+      </div>
+    </div>
+    <div id="chart-holder-card" class="card-body" style="display: None;">
+      <div class="row mt-4">
+        <div class="col-12">
+
+          <div class="chart" id="chart_holder">
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+{% endblock %}
+
+{%block extra_scripts%}
+
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/litepicker/dist/litepicker.js"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script src="{% static 'lib/nice-select2/js/nice-select2.js' %}"></script>
+
+<script>
+
+    var element = document.getElementById("obs-nav");
+    element.classList.add("active");
+    
+    var options = {searchable: true};
+    NiceSelect.bind(document.getElementById("station"), options);
+    var param_nice; 
+
+    var map = L.map('map');
+    var layerGroup = L.layerGroup().addTo(map);
+
+    var view_button = document.getElementById('view')
+    var stn_map_row = document.getElementById('stn-map-row')
+    var stn_select = document.getElementById('station')
+    var param_select = document.getElementById('parameter')
+    var chart_card = document.getElementById('chart-card')
+    var chart_holder_card = document.getElementById('chart-holder-card')
+    var stn_id = stn_select.value
+
+    var stn_meta = {}
+    get_stn_meta(stn_id);
+    get_stn_params(stn_id);
+
+    var picker;
+    var stnIcon = L.icon({
+      iconUrl: `{% static 'img/stations2.png' %}`,
+      iconSize: [50,60]
+    })
+
+
+    view_button.addEventListener("click", ()=>{
+      stn_map_row.style.display = '';
+      // document.getElementById('stn_name').innerHTML = stn_select.options[stn_select.selectedIndex].text;
+
+      display_stn_meta();
+
+      var chart = document.getElementById('chart-row')
+      chart.style.display = '';
+      //display_chart();
+    })
+  
+    stn_select.addEventListener("change", ()=>{
+      stn_id = stn_select.value;
+      get_stn_meta(stn_id);
+      param_nice.destroy();
+      get_stn_params(stn_id);
+    })
+
+    function get_stn_meta(stn_id){
+      fetch(`{% url 'obs_data.get_station_meta'%}?station_id=${stn_id}`)
+      .then(r=>r.json())
+      .then(resp => {
+
+        stn_meta['name'] = resp['info']['name'];
+        stn_meta['type'] =  resp['info']['station_type'];
+        stn_meta['local_id'] = resp['info']['station_id'];
+        stn_meta['wmo_id'] = resp['info']['wmo_id'];
+        stn_meta['lat'] = resp['info']['lat'];
+        stn_meta['lon'] = resp['info']['lon'];
+        stn_meta['location'] =  resp['info']['lat'] + ", " + resp['info']['lon'];
+        stn_meta['miss_count'] = resp['missing_count'];
+        if (resp['rec_start'] == null){
+          stn_meta['period'] = 'N/A';
+        }
+        else{
+          stn_meta['period'] = resp['rec_start'] + " to " + resp['rec_end'];
+          stn_meta['startDate'] = resp['rec_start'] != null?resp['rec_start']: '-';
+          stn_meta['end_Date'] = resp['rec_end'] != null?resp['rec_end']: '-';
+        }
+        params = resp['params'].map(item => [item['name']]);
+        stn_meta['params'] = params.join(',')
+          picker = new Litepicker({ 
+          element: document.getElementById('daterange'),
+          singleMode: false,
+          startDate: moment(stn_meta['startDate']),
+          endDate: moment(stn_meta['endDate']),
+          delimiter: " to "
+      });
+      })
+
+    }
+
+
+    var gen_chart = document.getElementById('gen-chart')
+    gen_chart.addEventListener("click", function(){
+
+      display_chart();
+
+
+    })
+
+
+    function display_stn_meta(){
+
+        display_map(stn_meta['lat'] ,stn_meta['lon'], stn_meta['name']);
+        
+        document.getElementById('stn_name').innerHTML = stn_meta['name'];
+        document.getElementById('type').innerHTML = stn_meta['type'];
+        document.getElementById('local_id').innerHTML = stn_meta['local_id'];
+        document.getElementById('wmo_id').innerHTML = stn_meta['wmo_id'];
+        document.getElementById('location').innerHTML = stn_meta['location']
+        document.getElementById('period').innerHTML = stn_meta['period'];
+        document.getElementById('miss_count').innerHTML = stn_meta['miss_count'];
+        document.getElementById('params').innerHTML = stn_meta['params'];
+    }
+
+    function get_stn_params(stn_id){
+      param_options = ''
+      fetch(`{% url 'obs_data.get_params'%}?station_id=${stn_id}`)
+      .then(r=>r.json())
+      .then(resp=>{
+
+        resp['parameters'].forEach(row => {
+
+          param_options += `<option value="${row.id}">${row.name}</option>`
+        })
+
+        param_select.innerHTML = param_options.trim();
+        param_nice = NiceSelect.bind(document.getElementById("parameter"), options);
+      })
+    }
+
+    function display_map(lat, lon , name){
+      map.setView([lat, lon], 14);
+
+      var map_url = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+
+      L.tileLayer(map_url, {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/outdoors-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+
+      }).addTo(map);
+
+      layerGroup.clearLayers();
+      let marker = L.marker([lat, lon], {icon: stnIcon}).bindPopup("<b>"+ name +"<b>")
+      marker.addTo(layerGroup);
+    }
+
+    function display_chart(){
+ 
+      var stn = document.querySelector('#station option:checked')
+      var param = document.querySelector('#parameter option:checked')
+      let date_ranges = document.getElementById("daterange").value.split(" to ")
+      start_date = moment(date_ranges[0]).format("YYYY-MM-DD")
+      end_date = moment(date_ranges[1]).format("YYYY-MM-DD")
+      var chart_type = 'spline'
+      if (param == null){
+        alert('No parameter!')
+        return
+      }
+      console.log(param.text)
+      if (param.text == 'rainfall'){
+        chart_type = 'column'
+      }
+
+      fetch(`{% url 'obs_data.get_obs'%}?start_date=${start_date}&end_date=${end_date}&station_id=${stn.value}&param_id=${param.value}`)
+      .then(r=>r.json())
+      .then( resp => {
+        if (resp['obs'].length == 0){
+
+          return
+        }
+        else{
+          obs = []
+          resp['obs'].forEach((item)=>{
+            if (item['value'] == -9999.0){
+
+              obs.push([moment(item['end_time']).unix()*1000, 0])
+
+            }
+            else{
+              obs.push([moment(item['end_time']).unix()*1000, item['value']])
+            }
+          })
+          obs_chart = Highcharts.stockChart('chart_holder', 
+              {
+                  rangeSelector: {
+                    selected: 1,
+                  },
+                  title: {
+                      text: `${stn.text}, ${param.text}`,
+                  },
+                  credits: {enabled: false},
+                  series: [{
+                      name: '',
+                      data: obs, //resp['obs'].map(row => [row['end_time'],row['value']]),
+                      type: chart_type,
+                      tooltip: {
+                          valueDecimals: 2
+                      }
+                  }]
+              }
+          );
+          chart_holder_card.style.display = '';
+        } 
+        }
+        )
+    }
+    
+</script>
+<!--
+<script>
+    function load_view_data(station_id){
+            
+    let param_id = $("#parameter").val()
+
+    let date_ranges = $("#daterange").val().split(" - ")
+
+    start_date = moment(date_ranges[0]).format("YYYY-MM-DD")
+    end_date = moment(date_ranges[1]).format("YYYY-MM-DD")
+
+    // check if parameter id is not null
+    notice.showLoading()
+    fetch(`{url}?station_id=${station_id}&param_id=${param_id}&start_date=${start_date}&end_date=${end_date}`)
+    .then(r=>r.json())
+    .then(stn_param_data => {
+        
+        if (stn_param_data['error']!=null){
+            
+            throw stn_param_data['message']
+        }
+
+        let chart_data = []
+        stn_param_data['data'].forEach((row)=>{
+
+            time = moment(row['end_time']).unix()*1000;
+            val = row['value'];
+
+            // handle nodata values
+            if (row['value']==-9999){
+                val = null;
+            }
+            chart_data.push([ time, val ])
+
+        })
+
+        //[default type]
+        chart_type = 'spline';
+        
+        if (stn_param_data.type=='ACCM'){
+            chart_type = 'column';
+        }
+
+        if (obs_chart != null){
+            obs_chart.destroy()
+        }
+
+        if ( $("#chart_holder").is(":visible") != true ){
+            $("#chart_holder").slideToggle(300, function(){
+                $('html, body').animate({
+                    scrollTop: $("#chart_holder").offset().top
+                }, 600);
+            })
+        }
+
+        obs_chart = Highcharts.stockChart('chart_holder', 
+            {
+                rangeSelector: {selected: 1},
+                title: {
+                    text: `${stn_param_data.parameter} (${stn_param_data.unit})`,
+                },
+                credits: {enabled: false},
+                series: [{
+                    name: '',
+                    data: chart_data,
+                    type: chart_type,
+                    tooltip: {
+                        valueDecimals: 2
+                    }
+                }]
+            }
+        );
+
+    }).catch((e)=>{
+        console.log(e)
+        tata.error("Failed to load",e)
+    }).finally(()=>{
+
+        window.setTimeout(()=>{
+            notice.hideLoading()
+        }, 300)
+    });
+    }
+
+
+</script>-->
+
+
+{%endblock%}

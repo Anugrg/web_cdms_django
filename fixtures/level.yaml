@@ -1,0 +1,21 @@
+# this table should be fixed throughout systems
+
+#[met parameters]
+- model: obs_data.level
+  pk: 1
+  fields:
+    name: "sfc"
+    full_name: "Surface"
+
+- model: obs_data.level
+  pk: 2
+  fields:
+    name: "2m"
+    full_name: "2 Meter"
+
+
+- model: obs_data.level
+  pk: 3
+  fields:
+    name: "10m"
+    full_name: "10 Meter"
