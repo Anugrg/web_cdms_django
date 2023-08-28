@@ -1,43 +1,207 @@
 {% extends 'forecast_base.html' %}
 
+{% load static%}
 
+{% block css_more %}
+
+      <link rel="stylesheet" href="{% static 'css/leaflet-areaselect.css' %}" />
+
+
+{%endblock%}
 {% block forecast_content %}
 
 
-<div class="row mt-4">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                ECMWF HRES
-            </div>
-            <div class="card-body pt-1">
- 
-                <div id="forecast-map" class="p-0" style="height:550px;background:#535364;width:100%;">
-                    <div id="params">
-                        <div id="param_table"></div>
+<!-- <div class="row">
+    <div class="col-12"> -->
+        <div class="tab-pane fade show active" id="fmap" role="tabpanel" aria-labelledby="pills-home-tab">    
+            
+            <div class="card">
+                <div class="card-header">
+                    ECMWF HRES
+                </div>
+                <div class="card-body pt-5">
+    
+                    <div id="forecast-map" class="p-0" style="height:550px;background:#535364;width:100%;">
+                        <div id="params">
+                            <div id="param_table"></div>
+                        </div>
+                    </div>
+
+                    <div style="width:100%;display:inline-grid;grid-template-columns: 5% 90% 5%; padding:10px 10px; background: transparent">
+
+                        <div class="text-left" style="text-align: left;padding-top: 12px;"><i id="fp" class="btn fpn fa fa-arrow-circle-left"></i></div>
+                        <div id="slider"> </div> 
+                        <div class="text-right" style="text-align: right;padding-top: 12px;"><i id="fn" class="btn fpn fa fa-arrow-circle-right"></i></div>
                     </div>
                 </div>
-
-                <div style="width:100%;display:inline-grid;grid-template-columns: 5% 90% 5%; padding:10px 10px; background: transparent">
-
-                    <div class="text-left" style="text-align: left;padding-top: 12px;"><i id="fp" class="btn fpn fa fa-arrow-circle-left"></i></div>
-                    <div id="slider"> </div> 
-                    <div class="text-right" style="text-align: right;padding-top: 12px;"><i id="fn" class="btn fpn fa fa-arrow-circle-right"></i></div>
+                <div class="card-footer">
+                    
+                <table id="forecast_meta" class="table table-borderless">
+                    <colgroup>
+                        <col span="1" style="width: 25%;">
+                        <col span="1" style="width: 75%;">
+                    </colgroup>
+                    <tbody>
+                        <tr>
+                            <th>Source</th>
+                            <td><a href="https://www.ecmwf.int/en/forecasts/datasets/set-iii">Atmospheric model Ensemble 15-day forecast (Set III - ENS)</a></td>
+                        </tr>
+                        <tr>
+                            <th>Center</th>
+                            <td> <a href="https://www.ecmwf.int/">European Center For Medium Range Weather Forecast</a></td>
+                        </tr>
+                        <tr>
+                            <th>Lead Time</th>
+                            <td>360 Hr</td>
+                        </tr>
+        
+                        <tr>
+                            <th>Model</th>
+                            <td>IFS</td>
+                        </tr>
+        
+                        <tr>
+                            <th>Type</th>
+                            <td>Ensemble Prediction, 51 member</td>
+                        </tr>
+        
+                        <tr>
+                            <th>Forecast Initialization Time</th>
+                            <td>{{init_time}}</td>
+                        </tr>
+                    </tbody>
+                </table>
                 </div>
             </div>
         </div>
-    </div>
-</div>
+        <div class="tab-pane fade" id="ncdown" role="tabpanel" aria-labelledby="pills-home-tab">    
+            
+            <div class="card">
+  
+                <div class="card-body pt-2">
+                    <div class="row mb-3">
+                        <div class="col-12 mb-nav-link4">
+                            <table class="p-0 m-0 table text-center" style="border-bottom:1px solid #e6e6e6; ">
+                                <tr>
+                                    <th>Forecast Source</th>
+                                    <th>Initialization Time</th>
+                                    <th>Updated At</th>
+                                    <th>Recent</th>
+                                </tr>
+    
+                                <tr>
+                                    <td>{{data.sys_state.source.name}}</td>
+                                    <td>{{data.sys_state.init_time}}</td>
+                                    <td>{{data.sys_state.updated_at}}</td>
+                                    <td> 
+                                    
+                                        {% if data.state_is_recent %}
+                                            <i class="fa fa-check-circle" style="color:#4caf50"></i>
+                                        {% else %}
+                                            <i class="fa fa-times-circle" style="color:#f44336"></i>
+                                        {%endif%}
+                                        
+                                    </td>
+                                </tr>
+                                
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row">    
+                                                
+                        <div id="paramlist" class="col-5">
+                            <h6 class="w-100 text-">Select Parameters</h6>
+                            
+                            <div id="slim" style="box-shadow:inset 0 0 4px 0px #e8e8e8;">
+                                <table id="ptable" class="table table-striped tbl-param" style="padding-left: 0%;">   
+                                        
+                                    {% for key, value in data.nc_params.items %}
+                                    
+                                    <tr>   
+                                        
+                                        <td colspan="2">
+                                            <label class="ckbox" style="cursor: pointer;"> 
+                                                <input name="variables" id="{{key}}" type="checkbox" value="{{key}}">
+                                                <span>
+                                                    {{key}} ({{value}})
+                                                </span>
+                                            </label>    
+                                        </td>
+                                        
+                                        
+                                            
+                                    </tr>
+                                    {% endfor %}
+
+                                </table>
+                            </div>
+                        </div>
+                            
+                        <div class="col-7">
+                            <h6>Select Domain</h6>
+                            <div class="br-5" style="overflow:hidden;">
+                                <div id="sel-map" style="height:595px; width: 100%;"></div>
+                            </div>
+                        </div>
+                        
+                    </div>   
+                    <div class="row">
+                        <div class="col-10">
+                            <table class="table table-latlon">
+                                <tr>   
+    
+                                    <th colspan=2 style="text-align: center;">Latitude</th>
+                                    <th colspan=2 style="text-align: center;">Longitude</th>
+    
+    
+                                </tr>
+                                <tr>          
+                                    
+                                    <td>South<input class="form-control br-5" name="bottom-lat" type="text"  id="bottom-lat" readonly></td>
+                                    <td>North<input class="form-control br-5" name="top-lat" type="text"  id="top-lat" readonly></td>
+    
+                                    <td>West<input class="form-control br-5" name="left-lon" type="text"  id="left-lon" readonly></td>
+                                    <td>East<input class="form-control br-5" name="right-lon" type="text" id="right-lon" readonly></td>
+                                
+                                </tr> 
+                            </table>
+
+                        </div>
+                        <div class="col-2">
+                            <table class="table">
+                                <tr>
+                                    <td class="text-center"><i class="fad fa-download"></i></td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: center;">
+                                        &nbsp;<br>
+                                        <input type="submit" id="download" value="Submit" class="form-control btn btn-primary br-5" style="cursor: pointer;" >
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    <!-- </div>
+</div> -->
+
+
 
 
 {% endblock%}
 
 {%block forecast_scripts_extra %}
 
+<script src="{% static 'js/leaflet-areaselect.js' %}"></script>
+
 
 <script>
-    var fmap_nav = document.getElementById('fmap')
-    fmap_nav.classList.add('active')
+    // var fmap_nav = document.getElementById('fmap')
+    // fmap_nav.classList.add('active')
 
     var fn = document.getElementById('fn')
     var fp = document.getElementById('fp')
@@ -59,7 +223,14 @@
 
     const url_pre = '{{url_prefix}}';
 
-    var fcst_map = L.map('forecast-map').setView([7.8731, 80.7718], 8);
+    var fcst_map = L.map('forecast-map').setView([7.8731, 80.7718], 7);
+
+    var center_lat = 25.0376
+    var center_lon = 76.4563
+    var zoom = 4
+
+    var selmap = L.map('sel-map').setView([center_lat, center_lon], zoom );
+
     L.tileLayer("https://api.mapbox.com/styles/v1/nazmul-rimes/{id}/tiles/256/{z}/{x}/{y}@2x?access_token={accessToken}", {
         attribution: '',
         maxZoom: 10,
@@ -69,6 +240,15 @@
         zIndex: 200,
         accessToken: 'pk.eyJ1IjoibmF6bXVsLXJpbWVzIiwiYSI6ImNrOWFzeHNtcDA3MjAzbG50dnB0YmkxNnAifQ.usNB6Kf9PyFtKTUF1XI38g',
     }).addTo(fcst_map);
+
+
+    L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmF6bXVsLXJpbWVzIiwiYSI6ImNraTcyajZzYTEwN2QzMm1oMXd1b3phMTYifQ.APkKLsJsTz-TVOVEoo46zQ", {
+        attribution: '',
+        maxZoom: 10,
+        id: 'mapbox/outdoors-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+    }).addTo(selmap);
 
     const cmap_legend = L.control({position: 'bottomright'});
     cmap_legend.onAdd = function (map) {
@@ -270,7 +450,132 @@
     init_forecast();
 
     var pbtn = document.getElementsByClassName('parameter-btn')
-    console.log(pbtn)
+    var lat_min = parseFloat('{{ data.lat_bounds.lat_min }}' )
+    var lat_max = parseFloat('{{ data.lat_bounds.lat_max }}' )
+    var lon_min = parseFloat('{{ data.lon_bounds.lon_min }}' )
+    var lon_max = parseFloat('{{ data.lon_bounds.lon_max }}' )
+
+
+    var areaSelect = L.areaSelect({width:200, height:300, minWidth:40, minHeight:40, minHorizontalSpacing:40, minVerticalSpacing:100});
+    areaSelect.addTo(selmap);
+
+    selmap.on('layeradd', function(){
+        console.log("load")
+        let bounds = areaSelect.getBounds();
+        $('#top-lat').val(bounds._northEast.lat.toPrecision(4))
+        $('#bottom-lat').val(bounds._southWest.lat.toPrecision(4))
+        $('#right-lon').val(bounds._northEast.lng.toPrecision(4))
+        $('#left-lon').val(bounds._southWest.lng.toPrecision(4))
+        
+    })
+
+
+    var bboxCoordinates = areaSelect.getBBoxCoordinates();
+
+    areaSelect.on("change", function(){
+
+        let bounds = this.getBounds();
+
+        $('#top-lat').val(bounds._northEast.lat.toPrecision(4))
+        $('#bottom-lat').val(bounds._southWest.lat.toPrecision(4))
+        $('#right-lon').val(bounds._northEast.lng.toPrecision(4))
+        $('#left-lon').val(bounds._southWest.lng.toPrecision(4))
+
+    });
+    function in_browser_download(content, filename,contentType) {
+        
+        const a = document.createElement("a");
+        const file = new Blob([content], { type: contentType });
+        a.href = URL.createObjectURL(file);
+        a.download = filename;
+        a.click();
+    }
+    $(document).ready(function(){
+        $("#download").click(function(){
+            if ($('input:checkbox').filter(':checked').length < 1){
+                /*notice.showToast({
+                                text: 'No Parameter Selected!',
+                                type: 'warning',
+                                showClose: true,
+                                //autoClose: false,
+                            });
+                return false;*/
+
+                return false;
+            }
+            if (($('#top-lat').val() <= lat_min) || ($('#bottom-lat').val() >= lat_max)){
+
+
+                return false;
+
+            }
+
+            if (($('#right-lon').val() <= lon_min) || ($('#left-lon').val() >= lon_max)) {
+
+                tata.error('Longitude out of bounds', 'Please Change Longitude')
+                return false;
+
+            }
+
+            let source = '{{data.sys_state.source.name}}'
+
+            var paramArray = []
+
+            $('input:checkbox').filter(':checked').each(function(){
+                    paramArray.push($(this).val());
+            });
+
+            let query = ''
+
+            paramArray.forEach(function(value){
+
+                query += "variables="+ value +"&"
+
+            })
+            query += "bottom-lat=" + $("#bottom-lat").val() +"&top-lat=" + $("#top-lat").val() + "&left-lon="  + $("#left-lon").val() + "&right-lon=" + $("#right-lon").val()
+            download_data(source, query);
+
+
+        });
+    });
+
+    function download_data(source, query){
+        
+
+        let url = ''
+        let filename = source + "_NC" + "_" + $("#top-lat").val() + "N_" + $("#bottom-lat").val() + "S_" + $("#right-lon").val() + "E_" + $("#left-lon").val() + "W.nc"
+
+
+        url = `{% url 'forecast.get_netcdf_subset_hres' %}?`
+
+        fetch(url + query)
+        .then(response => {
+            const contentType = response.headers.get("content-type")
+            if (contentType == "application/json"){
+                return response.json().then(data => {
+                    if (data['error']!=null){
+                        throw data['message']
+                    }
+                })
+            } else {
+                return response.blob().then(blob => {
+                    in_browser_download(blob,filename, 'application/netCDF');
+                })
+            }
+        })
+        .catch((e)=>{
+            console.log(e);
+        }).finally(()=>{
+            window.setTimeout(()=>{
+                console.log('off')
+
+            }, 300)
+        })
+
+    }
+
+
+
 </script>
 
 

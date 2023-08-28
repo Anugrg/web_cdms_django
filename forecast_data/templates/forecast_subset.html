@@ -1,0 +1,33 @@
+{% extends 'forecast_base.html' %}
+
+
+{% block forecast_content %}
+
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                ECMWF HRES
+            </div>
+            <div class="card-body pt-1">
+ 
+                <div id="forecast-map" class="p-0" style="height:550px;background:#535364;width:100%;">
+                    <div id="params">
+                        <div id="param_table"></div>
+                    </div>
+                </div>
+
+                <div style="width:100%;display:inline-grid;grid-template-columns: 5% 90% 5%; padding:10px 10px; background: transparent">
+
+                    <div class="text-left" style="text-align: left;padding-top: 12px;"><i id="fp" class="btn fpn fa fa-arrow-circle-left"></i></div>
+                    <div id="slider"> </div> 
+                    <div class="text-right" style="text-align: right;padding-top: 12px;"><i id="fn" class="btn fpn fa fa-arrow-circle-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock%}

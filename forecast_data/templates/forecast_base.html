@@ -28,6 +28,8 @@
     }
     
     </style>
+    {% block css_more%}{% endblock%}
+
 {%endblock%}
 
 
@@ -41,15 +43,15 @@
 <div class="row">
 
     <div class="nav-wrapper position-relative end-0">
-      <div class="col-6">
-        <ul class="nav nav-pills nav-fill p-" role="tablist">
+      <div class="col-12">
+        <!-- <ul class="nav nav-pills nav-fill p-" role="tablist">
           <li class="nav-item">
-              <a  id="fmap" class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="{% url 'forecast.forecast_view'%}" role="tab" aria-controls="profile" aria-selected="true">
+              <a  id="fmap" class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="{% url 'forecast.forecast_view'%}" role="tab" aria-controls="profile" aria-selected="false">
               Forecast Map
               </a>
            </li>
-          <li class="nav-item">
-             <a id="ncf" class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="{%url 'forecast.forecast_netcdf'%}" role="tab" aria-controls="profile" aria-selected="true">
+          <li id="n" class="nav-item">
+             <a id="ncf" class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="{%url 'forecast.forecast_netcdf'%}" role="tab" aria-controls="profile" aria-selected="false">
              Download Raw Netcdf
              </a>
           </li>
@@ -58,16 +60,31 @@
              Download Forecast Graph
              </a>
           </li>
+        </ul> -->
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#fmap" type="button" role="tab" aria-controls="home" aria-selected="true">Forecast Map</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#ncdown" type="button" role="tab" aria-controls="profile" aria-selected="false">NetCDF Subset</button>
+          </li>
+          <!-- <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#fgraph" type="button" role="tab" aria-controls="contact" aria-selected="false">Forecast Graph</button>
+          </li> -->
         </ul>
+        <div class="tab-content" id="myTabContent">
+          {% block forecast_content %}
+
+          {% endblock %}
+
+        </div>
   
       </div>
   
     </div>
   </div>
 
-    {% block forecast_content %}
 
-    {% endblock %}
 
 {% endblock %}
 

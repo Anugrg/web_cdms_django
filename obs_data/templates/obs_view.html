@@ -59,7 +59,7 @@
   <div class="col-lg-6 mb-lg-0 mb-4">
     <div class="card z-index-2">
       <div class="card-body p-3" >
-        <div id="map" style="height: 443px;">
+        <div id="map" style="height: 423px;">
         </div>
       </div>
     </div>
@@ -70,8 +70,8 @@
       <div class="card-header pb-0">
         <h6>Station Overview</h6>
       </div>
-      <div class="card-body px-0 pt-0 pb-2">
-          <div class="table-responsive p-3">
+      <div class="card-body px-0 pt-0 pb-1">
+          <div id="stn-table" class="table-responsive p-3">
               <table class="table align-items-center mb-0">
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Name</th>
@@ -180,11 +180,16 @@
 
 
 
-<div id="chart-row" class="row mt-4" style="display:None;">
-  <div id="chart-card" class="card z-index-2">
-    <div class="card-header">
+<div id="chart-row" class="card mt-4" style="display:None;">
+  <div class="card">
 
-      <div class="row mt-4">
+    <div class="card-header">
+      Observation Chart
+
+    </div>
+    <div class="card-body">
+      <div class="row">
+        
         <div class="col-2">
           <p class="mg-b-10">Select Date Range</p>
           <input type="text" id="daterange" class="form-control daterange br-5" readonly>
@@ -194,21 +199,18 @@
           <p  class="mg-b-10">&nbsp;</p>
           <p id="gen-chart" class=" form-control btn btn-primary br-5">Generate</p>
         </div>
-      </div>
-    </div>
-    <div id="chart-holder-card" class="card-body" style="display: None;">
-      <div class="row mt-4">
-        <div class="col-12">
 
-          <div class="chart" id="chart_holder">
-          </div>
+      </div>  
+      <div id="chart-holder-card" class="row" style="display:None">
+        <div class="col-12">
+            <div class="chart" id="chart_holder">
+            </div>
 
         </div>
       </div>
     </div>
+
   </div>
-
-
 </div>
 
 
@@ -351,7 +353,7 @@
     function display_map(lat, lon , name){
       map.setView([lat, lon], 14);
 
-      var map_url = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw'
+      var map_url = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmF6bXVsLXJpbWVzIiwiYSI6ImNraTcyajZzYTEwN2QzMm1oMXd1b3phMTYifQ.APkKLsJsTz-TVOVEoo46zQ'
 
       L.tileLayer(map_url, {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',

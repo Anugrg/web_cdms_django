@@ -1,0 +1,51 @@
+# Python Cache
+__pycache__/
+*.py[cod]
+
+# Database
+*.sqlite3
+
+# Binary Blob
+*.nc
+*.grib
+*.nc4
+*.grib2
+*.geotiff
+*.kml
+*.ecw
+
+# Project Temporary Files
+__tmp__/
+API_DOC.pdf
+uploads/
+uploads/*
+dataex/settings_local.py
+venv
+FDATA/
+IMD/
+staticfiles/
+
+# OS/IDE
+.DS_Store
+.idea
+.vscode/*
+
+# npm Packages
+node_modules/
+
+# Python Package
+*.egg-info/
+*.egg
+.installed.cfg
+
+# Notebook
+.ipynb_checkpoints
+
+# MyPy
+.mypy_cache/
+
+# Virtual Environments
+.env
+.venv
+env/
+venv/
