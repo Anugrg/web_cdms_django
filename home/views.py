@@ -26,9 +26,10 @@ class HomeView(View):
         period = obs_data.objects.all().aggregate(
             Min('start_time'), Max('end_time')
         )
-        start__date = self.change_to_str(period['start_time__min'])
+        start_date = self.change_to_str(period['start_time__min'])
         end_date = self.change_to_str(period['end_time__max'])
-        return f'{start__date} to {end_date}'
+
+        return f'{start_date} to {end_date}'
     
     def change_to_str(self, _date):
         return dt.strftime(_date, '%Y-%m-%d')

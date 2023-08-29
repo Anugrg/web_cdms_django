@@ -2,6 +2,8 @@
 {% load static %}
 {% block extra_css %}
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
 
 {% endblock %}
 
@@ -489,26 +491,17 @@
 {%block extra_scripts%}
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-
+<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
 
 <script>
 
-    var element = document.getElementById("dash-nav");
+    let element = document.getElementById("dash-nav");
     element.classList.add("active");
-    var map_url = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmF6bXVsLXJpbWVzIiwiYSI6ImNraTcyajZzYTEwN2QzMm1oMXd1b3phMTYifQ.APkKLsJsTz-TVOVEoo46zQ'
+    let map_url = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmF6bXVsLXJpbWVzIiwiYSI6ImNraTcyajZzYTEwN2QzMm1oMXd1b3phMTYifQ.APkKLsJsTz-TVOVEoo46zQ'
 
-    var map = L.map('map').setView([7.8731, 80.7718], 9);
+    let map = L.map('map').setView([7.8731, 80.7718], 9);
 
-    var stns = {{stations|safe}}
-    console.log(typeof(stns))
-    stns_list = []
-
-    stns.forEach(element => {
-      let marker = L.marker([element['lat'], element['lon']]).bindPopup("<b>"+ element['name'] +"<b>")
-      stns_list.push(marker)
-
-    });
-    var layerGroup = L.layerGroup(stns_list).addTo(map);
+    let stns = {{stations|safe}}
 
     L.tileLayer(map_url, {
       attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -519,14 +512,21 @@
 
     }).addTo(map);
 
-</script>
+    let markers = L.markerClusterGroup();
+    stns.forEach(element => {
+      let marker = L.marker([element['lat'], element['lon']]).bindPopup("<b>"+ element['name'] +"<b>")
+      markers.addLayer(marker);
+    });
 
 
-<script>
-    var times = []
-    var vals = []
-    var obs = []
-    var ctx2 = document.getElementById("chart-line").getContext("2d");
+    map.addLayer(markers);
+
+
+    let times = []
+    let vals = []
+    let obs = []
+    let ctx2 = document.getElementById("chart-line").getContext("2d");
+
     fetch(`{% url 'obs_data.get_obs' %}?start_date=2021-01-01&end_date=2021-01-20&station_id=832&param_id=9`)
     .then(r=>r.json())
     .then(resp=>{
@@ -554,72 +554,6 @@
       })
     }
     )
-
-        // var ctx = document.getElementById("chart-bars").getContext("2d");
-
-    // new Chart(ctx, {
-    //   type: "bar",
-    //   data: {
-    //     labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-    //     datasets: [{
-    //       label: "Sales",
-    //       tension: 0.4,
-    //       borderWidth: 0,
-    //       borderRadius: 4,
-    //       borderSkipped: false,
-    //       backgroundColor: "#fff",
-    //       data: [450, 200, 100, 220, 500, 100, 400, 230, 500],
-    //       maxBarThickness: 6
-    //     }, ],
-    //   },
-    //   options: {
-    //     responsive: true,
-    //     maintainAspectRatio: false,
-    //     plugins: {
-    //       legend: {
-    //         display: false,
-    //       }
-    //     },
-    //     interaction: {
-    //       intersect: false,
-    //       mode: 'index',
-    //     },
-    //     scales: {
-    //       y: {
-    //         grid: {
-    //           drawBorder: false,
-    //           display: false,
-    //           drawOnChartArea: false,
-    //           drawTicks: false,
-    //         },
-    //         ticks: {
-    //           suggestedMin: 0,
-    //           suggestedMax: 500,
-    //           beginAtZero: true,
-    //           padding: 15,
-    //           font: {
-    //             size: 14,
-    //             family: "Open Sans",
-    //             style: 'normal',
-    //             lineHeight: 2
-    //           },
-    //           color: "#fff"
-    //         },
-    //       },
-    //       x: {
-    //         grid: {
-    //           drawBorder: false,
-    //           display: false,
-    //           drawOnChartArea: false,
-    //           drawTicks: false
-    //         },
-    //         ticks: {
-    //           display: false
-    //         },
-    //       },
-    //     },
-    //   },
-    // });
 
   </script>
 
