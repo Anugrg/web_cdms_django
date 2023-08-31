@@ -5,14 +5,11 @@
 {% block css_more %}
 
       <link rel="stylesheet" href="{% static 'css/leaflet-areaselect.css' %}" />
-
+      <link rel="stylesheet" href="{% static 'css/leaflet_forecast_map_patch.css' %}"/>
 
 {%endblock%}
 {% block forecast_content %}
 
-
-<!-- <div class="row">
-    <div class="col-12"> -->
         <div class="tab-pane fade show active" id="fmap" role="tabpanel" aria-labelledby="pills-home-tab">    
             
             <div class="card">
@@ -44,7 +41,7 @@
                     <tbody>
                         <tr>
                             <th>Source</th>
-                            <td><a href="https://www.ecmwf.int/en/forecasts/datasets/set-iii">Atmospheric model Ensemble 15-day forecast (Set III - ENS)</a></td>
+                            <td><a href="https://www.ecmwf.int/en/forecasts/datasets/set-iii">Atmospheric Model high resolution 10-day forecast (Set I - HRES)</a></td>
                         </tr>
                         <tr>
                             <th>Center</th>
@@ -52,7 +49,7 @@
                         </tr>
                         <tr>
                             <th>Lead Time</th>
-                            <td>360 Hr</td>
+                            <td>240 Hr</td>
                         </tr>
         
                         <tr>
@@ -62,7 +59,7 @@
         
                         <tr>
                             <th>Type</th>
-                            <td>Ensemble Prediction, 51 member</td>
+                            <td>Single Prediction</td>
                         </tr>
         
                         <tr>
@@ -88,22 +85,19 @@
                                     <th>Updated At</th>
                                     <th>Recent</th>
                                 </tr>
-    
                                 <tr>
                                     <td>{{data.sys_state.source.name}}</td>
                                     <td>{{data.sys_state.init_time}}</td>
                                     <td>{{data.sys_state.updated_at}}</td>
-                                    <td> 
-                                    
+                                    <td>
+
                                         {% if data.state_is_recent %}
                                             <i class="fa fa-check-circle" style="color:#4caf50"></i>
                                         {% else %}
                                             <i class="fa fa-times-circle" style="color:#f44336"></i>
                                         {%endif%}
-                                        
                                     </td>
                                 </tr>
-                                
                             </table>
                         </div>
                     </div>
@@ -127,34 +121,25 @@
                                                 </span>
                                             </label>    
                                         </td>
-                                        
-                                        
-                                            
                                     </tr>
                                     {% endfor %}
-
                                 </table>
                             </div>
                         </div>
-                            
                         <div class="col-7">
                             <h6>Select Domain</h6>
                             <div class="br-5" style="overflow:hidden;">
                                 <div id="sel-map" style="height:595px; width: 100%;"></div>
                             </div>
                         </div>
-                        
-                    </div>   
+                    </div>
                     <div class="row">
                         <div class="col-10">
                             <table class="table table-latlon">
                                 <tr>   
-    
-                                    <th colspan=2 style="text-align: center;">Latitude</th>
+                                        <th colspan=2 style="text-align: center;">Latitude</th>
                                     <th colspan=2 style="text-align: center;">Longitude</th>
-    
-    
-                                </tr>
+                                    </tr>
                                 <tr>          
                                     
                                     <td>South<input class="form-control br-5" name="bottom-lat" type="text"  id="bottom-lat" readonly></td>
@@ -186,10 +171,6 @@
                 </div>
             </div>
         </div>
-    <!-- </div>
-</div> -->
-
-
 
 
 {% endblock%}
@@ -200,9 +181,6 @@
 
 
 <script>
-    // var fmap_nav = document.getElementById('fmap')
-    // fmap_nav.classList.add('active')
-
     var fn = document.getElementById('fn')
     var fp = document.getElementById('fp')
 
@@ -225,12 +203,6 @@
 
     var fcst_map = L.map('forecast-map').setView([7.8731, 80.7718], 7);
 
-    var center_lat = 25.0376
-    var center_lon = 76.4563
-    var zoom = 4
-
-    var selmap = L.map('sel-map').setView([center_lat, center_lon], zoom );
-
     L.tileLayer("https://api.mapbox.com/styles/v1/nazmul-rimes/{id}/tiles/256/{z}/{x}/{y}@2x?access_token={accessToken}", {
         attribution: '',
         maxZoom: 10,
@@ -241,14 +213,30 @@
         accessToken: 'pk.eyJ1IjoibmF6bXVsLXJpbWVzIiwiYSI6ImNrOWFzeHNtcDA3MjAzbG50dnB0YmkxNnAifQ.usNB6Kf9PyFtKTUF1XI38g',
     }).addTo(fcst_map);
 
+    let subsetTab = document.getElementById('downloadSubset');
 
-    L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmF6bXVsLXJpbWVzIiwiYSI6ImNraTcyajZzYTEwN2QzMm1oMXd1b3phMTYifQ.APkKLsJsTz-TVOVEoo46zQ", {
-        attribution: '',
-        maxZoom: 10,
-        id: 'mapbox/outdoors-v11',
-        tileSize: 512,
-        zoomOffset: -1,
-    }).addTo(selmap);
+    subsetTab.addEventListener('click', ()=>{
+
+        if (subsetTab.classList.contains('active')){
+            selmap.invalidateSize();
+        }
+
+    }
+    );
+
+
+    var center_lat = 25.0376
+    var center_lon = 76.4563
+    var zoom = 4
+
+    var selmap = L.map('sel-map').setView([center_lat, center_lon], zoom );
+    var subsetMapTile = L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmF6bXVsLXJpbWVzIiwiYSI6ImNraTcyajZzYTEwN2QzMm1oMXd1b3phMTYifQ.APkKLsJsTz-TVOVEoo46zQ", {
+            attribution: '',
+            maxZoom: 10,
+            id: 'mapbox/outdoors-v11',
+            tileSize: 512,
+            zoomOffset: -1,
+        }).addTo(selmap);
 
     const cmap_legend = L.control({position: 'bottomright'});
     cmap_legend.onAdd = function (map) {
@@ -540,11 +528,8 @@
     });
 
     function download_data(source, query){
-        
-
         let url = ''
         let filename = source + "_NC" + "_" + $("#top-lat").val() + "N_" + $("#bottom-lat").val() + "S_" + $("#right-lon").val() + "E_" + $("#left-lon").val() + "W.nc"
-
 
         url = `{% url 'forecast.get_netcdf_subset_hres' %}?`
 

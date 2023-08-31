@@ -38,12 +38,6 @@ class ForecastView(View):
         return render(request, 'forecast_view.html', data)
 
 
-class NetcdfView(View):
-
-    def get(self, request):
-        return render(request, 'netcdf_view.html')
-    
-
 class get_netcdf_subset_ecmwf_hres(View):
 
     state_name = "ECMWF_HRES_NC"
@@ -52,6 +46,8 @@ class get_netcdf_subset_ecmwf_hres(View):
         param_list = request.GET.getlist('variables')
         left_lon, right_lon = float(request.GET.get('left-lon')), float(request.GET.get('right-lon'))
         top_lat, bottom_lat = float(request.GET.get('top-lat')), float(request.GET.get('bottom-lat'))
+        if not param_list:
+            return JsonResponse({'error': 'query missing'})
 
         return get_subset_netcdf(
             param_list,

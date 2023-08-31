@@ -13,22 +13,26 @@
 {%block content%}
 
 <div class="row">
-    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+    <div class="col-xl-3 col-sm-6">
       <div class="card">
         <div class="card-body p-3">
           <div class="row">
             <div class="col-8">
               <div class="numbers">
-                <p class="text-sm mb-0 text-capitalize font-weight-bold">Number of Stations</p>
+                <p class="text-sm mb-0 text-capitalize font-weight-bold">Welcome,</p>
                 <h5 class="font-weight-bolder mb-0">
-                  {{ num_stations }}
-                  <!--<span class="text-success text-sm font-weight-bolder">+55%</span>-->
+                  User123
                 </h5>
               </div>
             </div>
             <div class="col-4 text-end">
               <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                  <div class="pt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-file-earmark-person" viewBox="0 0 16 16">
+                      <path d="M11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                      <path d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2zM9.5 3A1.5 1.5 0 0 0 11 4.5h2v9.255S12 12 8 12s-5 1.755-5 1.755V2a1 1 0 0 1 1-1h5.5v2z"/>
+                    </svg>
+                </div>
               </div>
             </div>
           </div>
@@ -39,20 +43,49 @@
       <div class="card">
         <div class="card-body p-3">
           <div class="row">
-            <div class="col-10">
+            <div class="col-8">
               <div class="numbers">
-                <p class="text-sm mb-0 text-capitalize font-weight-bold">Time Period</p>
+                <p class="text-sm mb-0 text-capitalize font-weight-bold">Number of Stations</p>
                 <h5 class="font-weight-bolder mb-0">
-                  2022-01-01 to 2022-10-01
-                  <!--<span class="text-success text-sm font-weight-bolder">+3%</span>-->
+                  {{ num_stations }}
                 </h5>
               </div>
             </div>
-            <!--<div class="col-2 text-end">
+            <div class="col-4 text-end">
               <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                <div class="pt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-geo" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z"/>
+                    </svg>
+                </div>
               </div>
-            </div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
+      <div class="card">
+        <div class="card-body p-3">
+          <div class="row">
+            <div class="col-8">
+              <div class="numbers">
+                <p class="text-sm mb-0 text-capitalize font-weight-bold">Time Period</p>
+                <h6 class="font-weight-bolder mb-0">
+                  2022-01-01 to 2022-10-01
+                </h6>
+              </div>
+            </div>
+            <div class="col-4 text-end">
+                <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
+                    <div class="pt-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-calendar2-week" viewBox="0 0 16 16">
+                          <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM2 2a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1H2z"/>
+                          <path d="M2.5 4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5H3a.5.5 0 0 1-.5-.5V4zM11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm-5 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1z"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
           </div>
         </div>
       </div>
@@ -66,36 +99,19 @@
                 <p class="text-sm mb-0 text-capitalize font-weight-bold">Total Observations</p>
                 <h5 class="font-weight-bolder mb-0">
                   {{obs_count}}
-                 <!-- <span class="text-danger text-sm font-weight-bolder">-2%</span>-->
                 </h5>
               </div>
             </div>
             <div class="col-4 text-end">
               <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-3 col-sm-6">
-      <div class="card">
-        <div class="card-body p-3">
-          <div class="row">
-            <div class="col-8">
-              <div class="numbers">
-                <p class="text-sm mb-0 text-capitalize font-weight-bold">Forecasts</p>
-                <h5 class="font-weight-bolder mb-0">
-                  Update Status
-                  
-                </h5>
-              </div>
-            </div>
-            <div class="col-4 text-end">
-              <div class="icon icon-shape bg-gradient-primary shadow text-center border-radius-md">
-                <i class="ni ni-check-bold text-lg opacity-10" aria-hidden="true"></i>
-              
+                  <div class="pt-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" class="bi bi-database-fill" viewBox="0 0 16 16">
+                      <path d="M3.904 1.777C4.978 1.289 6.427 1 8 1s3.022.289 4.096.777C13.125 2.245 14 2.993 14 4s-.875 1.755-1.904 2.223C11.022 6.711 9.573 7 8 7s-3.022-.289-4.096-.777C2.875 5.755 2 5.007 2 4s.875-1.755 1.904-2.223Z"/>
+                      <path d="M2 6.161V7c0 1.007.875 1.755 1.904 2.223C4.978 9.71 6.427 10 8 10s3.022-.289 4.096-.777C13.125 8.755 14 8.007 14 7v-.839c-.457.432-1.004.751-1.49.972C11.278 7.693 9.682 8 8 8s-3.278-.307-4.51-.867c-.486-.22-1.033-.54-1.49-.972Z"/>
+                      <path d="M2 9.161V10c0 1.007.875 1.755 1.904 2.223C4.978 12.711 6.427 13 8 13s3.022-.289 4.096-.777C13.125 11.755 14 11.007 14 10v-.839c-.457.432-1.004.751-1.49.972-1.232.56-2.828.867-4.51.867s-3.278-.307-4.51-.867c-.486-.22-1.033-.54-1.49-.972Z"/>
+                      <path d="M2 12.161V13c0 1.007.875 1.755 1.904 2.223C4.978 15.711 6.427 16 8 16s3.022-.289 4.096-.777C13.125 14.755 14 14.007 14 13v-.839c-.457.432-1.004.751-1.49.972-1.232.56-2.828.867-4.51.867s-3.278-.307-4.51-.867c-.486-.22-1.033-.54-1.49-.972Z"/>
+                    </svg>
+                  </div>
               </div>
             </div>
           </div>
@@ -103,50 +119,6 @@
       </div>
     </div>
   </div>
-  <div class="row mt-4">
-    <!--<div class="col-lg-7 mb-lg-0 mb-4">
-      <div class="card">
-        <div class="card-body p-3">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="d-flex flex-column h-100">
-                <p class="mb-1 pt-2 text-bold">Built by developers</p>
-                <h5 class="font-weight-bolder">Soft UI Dashboard</h5>
-                <p class="mb-5">From colors, cards, typography to complex elements, you will find the full documentation.</p>
-                <a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
-                  Read More
-                  <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-                </a>
-              </div>
-            </div>
-            <div class="col-lg-5 ms-auto text-center mt-5 mt-lg-0">
-              <div class="bg-gradient-primary border-radius-lg h-100">
-                <img src="{% static '/assets/img/shapes/waves-white.svg' %}" class="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves">
-                <div class="position-relative d-flex align-items-center justify-content-center h-100">
-                  <img class="w-100 position-relative z-index-2 pt-4" src="{% static '/assets/img/illustrations/rocket-white.png' %}" alt="rocket">
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-lg-5">
-      <div class="card h-100 p-3">
-        <div class="overflow-hidden position-relative border-radius-lg bg-cover h-100" style="background-image: url('../assets/img/ivancik.jpg');">
-          <span class="mask bg-gradient-dark"></span>
-          <div class="card-body position-relative z-index-1 d-flex flex-column h-100 p-3">
-            <h5 class="text-white font-weight-bolder mb-4 pt-2">Work with the rockets</h5>
-            <p class="text-white">Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the opportunity first.</p>
-            <a class="text-white text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
-              Read More
-              <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>-->
   <div class="row mt-4">
     <div class="col-lg-5 mb-lg-0 mb-4">
       <div class="card z-index-2" style="height: 100%;">
@@ -226,9 +198,7 @@
                     </div>
                   </td>
                   <td class="align-middle text-center">
-
                     <p>2000</p>
-
                   </td>
                   <td class="align-middle text-center text-sm">
                     <span class="text-xs font-weight-bold"> Rainfall </span>
@@ -240,7 +210,6 @@
                           <span class="text-xs font-weight-bold">0.23 mm </span>
                         </div>
                       </div>
-
                     </div>
                   </td>
                 </tr>
@@ -251,9 +220,7 @@
                       </div>
                   </td>
                   <td class="align-middle text-center">
-
                     <p>-</p>
-
                   </td>
                   <td class="align-middle text-center text-sm">
                     <span class="text-xs font-weight-bold"> Rainfall </span>
@@ -276,9 +243,7 @@
                       </div>
                   </td>
                   <td class="align-middle text-center">
-
                     <p>-</p>
-
                   </td>
                   <td class="align-middle text-center text-sm">
                     <span class="text-xs font-weight-bold"> Rainfall </span>
@@ -290,7 +255,6 @@
                           <span class="text-xs font-weight-bold">5.2 mm </span>
                         </div>
                       </div>
-
                     </div>
                   </td>
                 </tr>
@@ -301,9 +265,7 @@
                       </div>
                   </td>
                   <td class="align-middle text-center">
-
                     <p>-</p>
-
                   </td>
                   <td class="align-middle text-center text-sm">
                     <span class="text-xs font-weight-bold"> Rainfall </span>
@@ -315,7 +277,6 @@
                           <span class="text-xs font-weight-bold">0.8 mm </span>
                         </div>
                       </div>
-
                     </div>
                   </td>
                 </tr>
@@ -326,9 +287,7 @@
                       </div>
                   </td>
                   <td class="align-middle text-center">
-
                     <p>-</p>
-
                   </td>
                   <td class="align-middle text-center text-sm">
                     <span class="text-xs font-weight-bold"> Atuela</span>
@@ -340,7 +299,6 @@
                           <span class="text-xs font-weight-bold">1.2 mm </span>
                         </div>
                       </div>
-
                     </div>
                   </td>
                 </tr>
@@ -351,9 +309,7 @@
                       </div>
                   </td>
                   <td class="align-middle text-center">
-
                     <p>-</p>
-
                   </td>
                   <td class="align-middle text-center text-sm">
                     <span class="text-xs font-weight-bold"> Rainfall </span>
@@ -365,7 +321,6 @@
                           <span class="text-xs font-weight-bold">0.5 mm </span>
                         </div>
                       </div>
-
                     </div>
                   </td>
                 </tr>
@@ -385,9 +340,6 @@
               See more
               <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
             </a>
-<!-- 
-            <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>
-            <span class="font-weight-bold">2000</span> records checked. -->
           </p>
         </div>
         <div class="card-body p-3">
@@ -459,24 +411,15 @@
             © <script>
               document.write(new Date().getFullYear())
             </script>
-            <!-- made with <i class="fa fa-heart"></i> by
-            <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-            for a better web. -->
           </div>
         </div>
         <div class="col-lg-6">
           <ul class="nav nav-footer justify-content-center justify-content-lg-end">
             <li class="nav-item">
-              <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
+              <a href="https://www.rimes.int/" class="nav-link text-muted" target="_blank">RIMES</a>
             </li>
             <li class="nav-item">
-              <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+              <a href="#" class="nav-link text-muted" target="_blank">About Us</a>
             </li>
           </ul>
         </div>
@@ -484,10 +427,7 @@
     </div>
   </footer>
 
-
 {%endblock%}
-
-
 {%block extra_scripts%}
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>

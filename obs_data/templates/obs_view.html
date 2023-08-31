@@ -17,41 +17,35 @@
 
 {% block content %}
 
-<div class="card z-index-3 mt-2">
-  <div class="card-body p-1">
-    <div class="row mt-1 p-2">
-      <div class="col-md-5">
-        <p  class="mg-b-10">Select Station</p>
-        <select class="form-control" id="station" name="station_id" placeholder="Select Station" required>
-          {% for row in stations%}
-              <option value="{{row.id}}">{{row.name}}</option>
-          {% endfor %}
 
-        </select>
+<div class="row">
+
+    <div class="card mt-2">
+      <div class="card-body p-1">
+        <div class="row mt-1 p-2">
+          <div class="col-md-5">
+            <p  class="mg-b-10">Select Station</p>
+            <select class="form-control" id="station" name="station_id" placeholder="Select Station" required>
+              {% for row in stations%}
+                  <option value="{{row.id}}">{{row.name}}</option>
+              {% endfor %}
+
+            </select>
+          </div>
+          <div class="col-md-5">
+            <p class="mg-b-10">Select Parameter</p>
+            <select class="form-control" id="parameter">
+
+            </select>
+          </div>
+          <div class="col-md-2">
+            <p  class="mg-b-10">&nbsp;</p>
+            <p id="view" class=" form-control btn btn-primary br-5">View</p>
+          </div>
+        </div>
       </div>
-      <div class="col-md-5">
-        <p class="mg-b-10">Select Parameter</p>
-        <select class="form-control" id="parameter">
 
-        </select>
-
-          
-      </div>
-      <!-- <div class="col-md-2">
-        <p class="mg-b-10">Select Date Range</p>
-        <input type="text" id="daterange" class="form-control daterange br-5" readonly>
-            
-        </input>
-
-
-      </div> -->
-
-      <div class="col-md-2">
-        <p  class="mg-b-10">&nbsp;</p>
-        <p id="view" class=" form-control btn btn-primary br-5">View</p>
-      </div>
     </div>
-  </div>
 
 </div>
 
@@ -177,8 +171,6 @@
     </div>
   </div>
 </div>
-
-
 
 <div id="chart-row" class="card mt-4" style="display:None;">
   <div class="card">

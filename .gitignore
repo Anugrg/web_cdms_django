@@ -24,7 +24,7 @@ venv
 FDATA/
 IMD/
 staticfiles/
-
+RIMESNAS/
 # OS/IDE
 .DS_Store
 .idea
