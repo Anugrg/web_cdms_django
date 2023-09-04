@@ -4,7 +4,10 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"/>
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.css">
     <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.4.1/dist/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="//cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <style>
 
+    </style>
 {% endblock %}
 
 {% block page_name %} Home {% endblock %}
@@ -122,9 +125,7 @@
   <div class="row mt-4">
     <div class="col-lg-5 mb-lg-0 mb-4">
       <div class="card z-index-2" style="height: 100%;">
-        <!-- <div class="card-header pb-0">
-          <h6>Stations Map</h6>          
-        </div> -->
+
         <div class="card-body p-3">
           <div id="map" style="height: 400px">
           </div>
@@ -135,11 +136,11 @@
     <div class="col-lg-7"><!-- start of obs chart-->
       <div class="card z-index-2" style="height: 100%">
         <div class="card-header pb-0">
-          <h6>Rainfall Chart</h6>
+          <h6>Average Rainfall</h6>
           <p class="text-sm">
             <a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="{% url 'obs_data.obs_view'%}">
-              Change
-              <i class="fas fa-bars text-sm ms-1" aria-hidden="true"></i>
+              
+                <i class="fas fa-ellipsis"></i>
             </a>
           </p>
         </div>
@@ -153,18 +154,14 @@
     </div><!--end of obs chart-->
   </div>
   <div class="row mt-4">
-    <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
-      <div class="card"><!--start oof stations overview-->
+    <div class="col-lg-12 col-md-6 mb-md-0 mb-4">
+      <div class="card p-3"><!--start of stations overview-->
         <div class="card-header pb-0">
-          <div class="row">
+          <div class="row pb-2">
             <div class="col-lg-6 col-7">
-              <h6>Stations Forecasts Overview</h6>
-              <p class="text-sm mb-0">
-                <!--<i class="fa fa-check text-info" aria-hidden="true"></i>
-                <span class="font-weight-bold ms-1"></span> -->
-              </p>
+              <h6>Stations Data Overview</h6>
             </div>
-            <div class="col-lg-6 col-5 my-auto text-end">
+            <div class="col-lg-6 my-auto text-end">
               <div class="dropdown float-lg-end pe-4">
                 <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
                   <i class="fa fa-ellipsis-v text-secondary"></i>
@@ -178,159 +175,26 @@
             </div>
           </div>
         </div>
-        <div class="card-body px-0 pb-2">
+        <div class="card-body px-0 pb-2 p-5">
           <div class="table-responsive">
-            <table class="table align-items-center mb-0">
+            <table id="obs-table" class="table stripe align-items-center mb-0">
               <thead>
                 <tr>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stations</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">WMO ID</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Parameter</th>
-                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Forecast</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Stations</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">ID</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Parameter
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Date</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Observation</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td class="align-middle text-center">
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">Colombo</h6>
-                      </div>
-                    </div>
-                  </td>
-                  <td class="align-middle text-center">
-                    <p>2000</p>
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <span class="text-xs font-weight-bold"> Rainfall </span>
-                  </td>
-                  <td class="align-middle text-center">
-                    <div class="progress-wrapper w-75 mx-auto">
-                      <div class="progress-info">
-                        <div class="progress-percentage">
-                          <span class="text-xs font-weight-bold">0.23 mm </span>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="align-middle text-center">
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">Ranorva</h6>
-                      </div>
-                  </td>
-                  <td class="align-middle text-center">
-                    <p>-</p>
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <span class="text-xs font-weight-bold"> Rainfall </span>
-                  </td>
-                  <td class="align-middle text-center">
-                    <div class="progress-wrapper w-75 mx-auto">
-                      <div class="progress-info">
-                        <div class="progress-percentage">
-                          <span class="text-xs font-weight-bold">3.2 mm </span>
-                        </div>
-                      </div>
-
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="align-middle text-center">
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">Mihinthale</h6>
-                      </div>
-                  </td>
-                  <td class="align-middle text-center">
-                    <p>-</p>
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <span class="text-xs font-weight-bold"> Rainfall </span>
-                  </td>
-                  <td class="align-middle text-center">
-                    <div class="progress-wrapper w-75 mx-auto">
-                      <div class="progress-info">
-                        <div class="progress-percentage">
-                          <span class="text-xs font-weight-bold">5.2 mm </span>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="align-middle text-center">
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">Rugam</h6>
-                      </div>
-                  </td>
-                  <td class="align-middle text-center">
-                    <p>-</p>
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <span class="text-xs font-weight-bold"> Rainfall </span>
-                  </td>
-                  <td class="align-middle text-center">
-                    <div class="progress-wrapper w-75 mx-auto">
-                      <div class="progress-info">
-                        <div class="progress-percentage">
-                          <span class="text-xs font-weight-bold">0.8 mm </span>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="align-middle text-center">
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">Angoda</h6>
-                      </div>
-                  </td>
-                  <td class="align-middle text-center">
-                    <p>-</p>
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <span class="text-xs font-weight-bold"> Atuela</span>
-                  </td>
-                  <td class="align-middle text-center">
-                    <div class="progress-wrapper w-75 mx-auto">
-                      <div class="progress-info">
-                        <div class="progress-percentage">
-                          <span class="text-xs font-weight-bold">1.2 mm </span>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td class="align-middle text-center">
-                      <div class="d-flex flex-column justify-content-center">
-                        <h6 class="mb-0 text-sm">Bata Ata</h6>
-                      </div>
-                  </td>
-                  <td class="align-middle text-center">
-                    <p>-</p>
-                  </td>
-                  <td class="align-middle text-center text-sm">
-                    <span class="text-xs font-weight-bold"> Rainfall </span>
-                  </td>
-                  <td class="align-middle text-center">
-                    <div class="progress-wrapper w-75 mx-auto">
-                      <div class="progress-info">
-                        <div class="progress-percentage">
-                          <span class="text-xs font-weight-bold">0.5 mm </span>
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                </tr>
+              <tbody id="obs-table-body">
               </tbody>
             </table>
           </div>
         </div>
       </div><!--end of station overview-->
     </div>
-    <div class="col-lg-4 col-md-6">
+    <!--<div class="col-lg-4 col-md-6">
       <div class="card h-100">
         <div class="card-header pb-0">
           <h6>Data Quality Control Overview</h6>
@@ -401,9 +265,9 @@
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
-  <footer class="footer pt-3  ">
+  <footer class="footer pt-3">
     <div class="container-fluid">
       <div class="row align-items-center justify-content-lg-between">
         <div class="col-lg-6 mb-lg-0 mb-4">
@@ -429,73 +293,100 @@
 
 {%endblock%}
 {%block extra_scripts%}
-<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
-<script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.4.1/dist/leaflet.markercluster.js"></script>
+    <script src="//cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-<script>
+    <script>
+        let element = document.getElementById("dash-nav");
+        element.classList.add("active");
+        let map_url = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmF6bXVsLXJpbWVzIiwiYSI6ImNraTcyajZzYTEwN2QzMm1oMXd1b3phMTYifQ.APkKLsJsTz-TVOVEoo46zQ'
 
-    let element = document.getElementById("dash-nav");
-    element.classList.add("active");
-    let map_url = 'https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoibmF6bXVsLXJpbWVzIiwiYSI6ImNraTcyajZzYTEwN2QzMm1oMXd1b3phMTYifQ.APkKLsJsTz-TVOVEoo46zQ'
+        let map = L.map('map').setView([7.8731, 80.7718], 9);
 
-    let map = L.map('map').setView([7.8731, 80.7718], 9);
+        let stns = {{stations|safe}}
 
-    let stns = {{stations|safe}}
+        L.tileLayer(map_url, {
+          attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+          maxZoom: 27,
+          id: 'mapbox/outdoors-v11',
+          tileSize: 512,
+          zoomOffset: -1,
 
-    L.tileLayer(map_url, {
-      attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-      maxZoom: 27,
-      id: 'mapbox/outdoors-v11',
-      tileSize: 512,
-      zoomOffset: -1,
+        }).addTo(map);
 
-    }).addTo(map);
-
-    let markers = L.markerClusterGroup();
-    stns.forEach(element => {
-      let marker = L.marker([element['lat'], element['lon']]).bindPopup("<b>"+ element['name'] +"<b>")
-      markers.addLayer(marker);
-    });
-
-
-    map.addLayer(markers);
+        let markers = L.markerClusterGroup();
+        stns.forEach(element => {
+          let marker = L.marker([element['lat'], element['lon']]).bindPopup("<b>"+ element['name'] +"<b>")
+          markers.addLayer(marker);
+        });
 
 
-    let times = []
-    let vals = []
-    let obs = []
-    let ctx2 = document.getElementById("chart-line").getContext("2d");
+        map.addLayer(markers);
 
-    fetch(`{% url 'obs_data.get_obs' %}?start_date=2021-01-01&end_date=2021-01-20&station_id=832&param_id=9`)
-    .then(r=>r.json())
-    .then(resp=>{
-        new Chart(ctx2, {
-        type: 'bar',
-        data: {
-          labels: resp['obs'].map(row => moment(row['end_time']).format('YYYY-MM-DD')),
-          datasets: [{
-            label : 'Colombo rainfall',
-            data: resp['obs'].map(row => row['value']),
-            backgroundColor: 'rgba(255, 99, 132, 0.2)',
-            borderColor: 'rgb(255, 99, 132)',
-            borderWidth: 1
-          }]
 
-        },
-        options:{
-          responsive: true,
-          maintainAspectRatio: false,
-          scales:{
-            y:{
-              beginAtZero: true
-            }
-        }}
-      })
-    }
-    )
+        let times = []
+        let vals = []
+        let obs = []
+        let ctx2 = document.getElementById("chart-line").getContext("2d");
 
-  </script>
+        fetch(`{% url 'obs_data.get_obs' %}?start_date=2021-01-01&end_date=2021-01-20&station_id=832&param_id=9`)
+        .then(r=>r.json())
+        .then(resp=>{
+            new Chart(ctx2, {
+            type: 'bar',
+            data: {
+              labels: resp['obs'].map(row => moment(row['end_time']).format('YYYY-MM-DD')),
+              datasets: [{
+                label : 'Colombo rainfall',
+                data: resp['obs'].map(row => row['value']),
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgb(255, 99, 132)',
+                borderWidth: 1
+              }]
+
+            },
+            options:{
+              responsive: true,
+              maintainAspectRatio: false,
+              scales:{
+                y:{
+                  beginAtZero: true
+                }
+            }}
+          })
+        }
+        )
+
+        let obsTableBody = document.getElementById('obs-table-body');
+        load_stations();
+
+        function load_stations(){
+
+            fetch(`{% url 'obs_data.get_station_meta' %}` )
+            .then(r=>r.json())
+            .then(resp=>{
+
+                resp['info'].forEach(stn=>{
+                    let row = obsTableBody.insertRow(0);
+                    let nameCell = row.insertCell(0);
+                    let wmoIdCell = row.insertCell(1);
+                    let paramCell = row.insertCell(2);
+                    let dateCell = row.insertCell(3);
+                    let valueCell = row.insertCell(4);
+                    nameCell.innerText = stn.name;
+                    wmoIdCell.innerText = stn.id;
+                    paramCell.innerHTML = `<span class="badge bg-primary">Rainfall</span>`;
+                    dateCell.innerText = '2023-09-04'
+                    valueCell.innerText = 10.0;
+                })
+
+                let table = new DataTable('#obs-table');
+            })
+        }
+
+      </script>
 
 {%endblock%}
 

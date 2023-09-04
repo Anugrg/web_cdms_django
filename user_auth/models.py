@@ -73,7 +73,7 @@ class CdmsUser(AbstractBaseUser):
         return self.is_active and self.is_admin
 
     def __str__(self):
-        return f'{self.name} // {self.email} // {self.organization.name}'
+        return f'{self.name} // {self.email}'
 
     class Meta:
         verbose_name = "User"

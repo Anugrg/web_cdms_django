@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'user_auth',
     'spatial_data_gen',
     'bufr_data',
-    'dataqc'
+    'dataqc',
+    'forecast_anls'
 ]
 
 MIDDLEWARE = [
@@ -113,6 +114,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'user_auth.CdmsUser'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -127,6 +129,11 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
+MEDIA_URL = '/uploads/'
+
+USER_ASSET_UPLOAD_TO = "user_asset"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
@@ -144,6 +151,6 @@ STATICFILES_DIRS = (
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ECMWF_HRES_NC = '/home/anubinda/RIMESNAS/ECMWF_HRES/%d%m%Y.nc'
+ECMWF_HRES_NC = '/home/thebaron/projects/sricdms/RIMESNAS/ECMWF_HRES/%d%m%Y.nc'
 FCST_JSON_URL_PREF = '/static/'
-FCST_JSONOUT = '/home/anubinda/Dev/sricdms/__tmp__/'
+FCST_JSONOUT = '/home/thebaron/projects/sricdms/FDATA/'

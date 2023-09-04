@@ -1,0 +1,356 @@
+{% extends 'base.html' %}
+
+{% load static%}
+
+
+{% block page_name %} Forecast Analysis {% endblock %}
+{% block page_title %} Forecast Analysis {% endblock %}
+
+
+
+{% block content%}
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                      <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#hres" type="button" role="tab" aria-controls="home" aria-selected="true">HRES</button>
+                      </li>
+{#                      <li class="nav-item" role="presentation">#}
+{#                        <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#ens" type="button" role="tab" aria-controls="profile" aria-selected="false">ENS</button>#}
+{#                      </li>#}
+{#                      <li class="nav-item" role="presentation">#}
+{#                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#seas" type="button" role="tab" aria-controls="contact" aria-selected="false">SEAS</button>#}
+{#                      </li>#}
+                    </ul>
+                </div>
+                <div class="card-body">
+
+                    <div class="tab-content" id="anlsTab">
+                          <div class="tab-pane fade show active" id="hres" role="tabpanel" aria-labelledby="home-tab">
+
+                              <div class="row">
+
+                                  <div class="col-12">
+                                       <table class="p-0 m-0 table table-striped text-center" style="border-bottom:1px solid #e6e6e6; ">
+                                            <tr>
+                                                <th>Forecast Source</th>
+                                                <th>Initialization Time</th>
+                                                <th>Updated At</th>
+                                                <th>Recent</th>
+                                            </tr>
+                                            <tr>
+                                                <td>ECMWF HRES</td>
+                                                <td>{{sys_state.init_time}}</td>
+                                                <td>{{sys_state.updated_at}}</td>
+                                                <td>
+                                                    {% if state_is_recent %}
+                                                        <i class="fa fa-check-circle" style="color:#4caf50"></i>
+                                                    {% else %}
+                                                        <i class="fa fa-times-circle" style="color:#f44336"></i>
+                                                    {%endif%}
+                                                </td>
+                                            </tr>
+                                         </table>
+                                  </div>
+                                  <div class="col-12">
+
+                                        <p class="pb-3 pt-3" style='border-bottom:1px solid #e8e8e8;'>
+                                            Forecast data is represented in gridded format where each grid is represented as with center points latitude and longitude of the grid.
+                                            To calculate the forecast data under a Polygon region, grid box is calculated for each latitude and longitude and checked if the grid
+                                            intersects with the Polygon. With this process a mask array (boolean array) is constucted as the same shape of the original raster grid where 0 value
+                                            in the mask array means the Polygon doesn't touches the grid and 1 means the polygon touches the grid. This mask array is then used to determine the grids
+                                            that intersects with polygon and subsequently calculate minimum, maximum and average value for the polygon region.
+                                        </p>
+                                  </div>
+                                  <div class="col-12 pt-2">
+                                      <div class="row">
+                                        <div class="col-4">
+                                            <h6 class="mg-b-10">Select Asset</h6>
+                                            <select class="form-control select2" id="asset">
+{#                                                {% for row in usr_assests %}#}
+{#                                                    <option value="{{row.identifier}}">{{row.name_only}}</option>#}
+                                                  <option value="">slk.geojson</option>
+{#                                                {% endfor %}#}
+                                            </select>
+
+                                        </div>
+
+                                        <div class="col-3">
+                                            <h6 class="mg-b-10">Select Unique Field</h6>
+                                            <select class="form-control select2" id="unique_field">
+
+                                            </select>
+
+                                        </div>
+
+                                        <div class="col-3">
+
+                                            <h6  class="mg-b-10">Select Reducer</h6>
+                                            <select class="form-control select2" id="reducer" name="reducer_name" placeholder="Select Station" required>
+                                                {% for row in reducers %}
+                                                    <option value="{{row.name}}">{{row.name}}</option>
+
+                                                {% endfor %}
+                                            </select>
+
+                                        </div>
+
+
+                                        <div class="col-2">
+                                            <h6  class="mg-b-10">&nbsp;</h6>
+                                            <p id="calculate" type="submit" class="form-control btn btn-with-icon btn-primary br-5">Calculate</p>
+
+                                        </div>
+                                      </div>
+                                  </div>
+
+                                   <div class="row mt-4 pl-3 pr-3" id="chart_div" style="display:none">
+                                    <div class="col-12">
+
+                                        <select class=" form-control select2" id="data_key_select">
+
+                                        </select>
+                                    </div>
+
+                                    <div id="chart_holder" class="col-12">
+                                    </div>
+
+                                </div>
+                              </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script src="https://code.highcharts.com/stock/highstock.js"></script>
+
+    <script>
+    console.log(`{{ sys_state }}`);
+    console.log(`{{ user_assests }}`)
+    function show_reducer_doc(){
+        let reducer_active = $("#reducer").val()
+        console.log(reducer_active)
+
+        $('.reducer-doc').hide(0,function(){
+
+            $(`#${reducer_active}`).show()
+        });
+    }
+
+    show_reducer_doc()
+
+
+    $("#reducer").on("change",function(){
+
+         show_reducer_doc()
+    })
+
+    const asset_info_link = "{%url 'forecast_anls.get_asset_info'%}"
+
+    function load_asset_unique_field(){
+        let asset_identifier = $("#asset").val()
+
+        fetch(`${asset_info_link}?asset_identifier=${asset_identifier}`).then(r=>r.json()).then((res_data)=>{
+
+            let options = ''
+            console.log(res_data.data[2])
+
+            if   (res_data.data[2].unique_fields){
+
+                res_data.data[2].unique_fields.forEach((row)=>{
+
+                    options += `<option value="${row}">${row}</option>`
+
+                })
+            }
+            console.log(options)
+
+            $("#unique_field").html(options)
+
+        })
+    }
+
+    load_asset_unique_field()
+
+    $("#asset").on("change", function(){
+        load_asset_unique_field()
+    })
+
+    function draw_table(data_key){
+        console.log('making table...');
+        let series = CURRENT_DATA.r_data[data_key];
+
+        let rows = '';
+        for (let i=0; i< series.time.length; i++){
+            s_time = moment(series.time[i][0]).format('YYYY-MM-DD');
+            e_time = moment(series.time[i][1]).format('YYYY-MM-DD');
+            rows += `<tr><td>${s_time}</td><td>${e_time}</td><td>${series.value[i]}</td></tr>`;
+        }
+        $("#anls-rows").html(rows);
+
+    }
+
+    function draw_chart(data_key){
+
+        let series = CURRENT_DATA.r_data[data_key]
+
+        let chart_type = null
+
+        if (CURRENT_DATA.chart_type == "column"){
+            chart_type = "column"
+        }else if(CURRENT_DATA.chart_type == "line"){
+            chart_type = 'spline'
+        }
+        console.log("key", data_key, chart_type,CURRENT_DATA['t-reduced'])
+
+        let chart_data = []
+
+        for (let i=0; i< series.time.length; i++){
+
+            let _time = null;
+            if(CURRENT_DATA['t-reduced']=='period'){
+
+                _time = moment(series.time[i][0]).unix()*1000;
+            }
+            else if(CURRENT_DATA['t-reduced']=='step'){
+
+                _time = moment(series.time[i]).unix() * 1000;
+            }
+
+            chart_data.push([_time,series.value[i]])
+
+        }
+        console.log(chart_data)
+
+        if (chart != null){
+            chart.destroy()
+        }
+
+        let chart_options = {
+            rangeSelector: {selected: 1},
+            title: {
+                text: ``,
+            },
+            credits: {enabled: false},
+            series: [{
+                name: '',
+                data: chart_data,
+                type: chart_type,
+                tooltip: {
+                    valueDecimals: 2
+                }
+            }]
+        }
+
+        console.log(chart_options)
+
+        $("#chart_div").show(0,function(){
+
+            chart = Highcharts.stockChart('chart_holder',
+                chart_options
+            );
+
+
+            $('html, body').animate({
+                    scrollTop: $("#chart_holder").offset().top
+                }, 300);
+        })
+    }
+
+    const notice = new Notice()
+
+    var CURRENT_DATA = null;
+    var chart= null;
+
+    const ecmwf_hres_region_data_url = "{% url 'forecast_anls.get_ecmwf_hres_region_data' %}"
+
+    // on click calculate
+    $("#calculate").on("click",function(){
+
+
+        let asset_identifier = $("#asset").val()
+        let unique_field = $("#unique_field").val()
+        let reducer =  $("#reducer").val()
+
+        let params = new URLSearchParams({
+            asset_identifier: asset_identifier,
+            unique_field: unique_field,
+            reducer: reducer
+        })
+
+
+        notice.showLoading();
+        fetch(`${ecmwf_hres_region_data_url}?${params.toString()}`).then(r=>r.json()).then((res_data)=>{
+
+            console.log(res_data)
+
+            if (res_data['error']!=null){
+                throw res_data['message']
+            }
+
+            CURRENT_DATA = res_data.data
+
+            let key_list = Object.keys(CURRENT_DATA.r_data)
+            let init_key =  key_list[0]
+
+            // add key names to select
+
+            let key_options = ''
+
+            key_list.forEach(_key=>{
+                key_options+= `<option value="${_key}">${_key}</option>`
+            })
+
+            $("#data_key_select").html(key_options)
+
+
+            draw_chart(init_key)
+            draw_table(init_key)
+
+
+
+
+        })
+        .catch((e)=>{
+            console.error(e)
+            tata.error("Failed to load",e)
+        }).finally(()=>{
+            window.setTimeout(()=>{
+                console.log('off')
+                notice.hideLoading()
+            }, 300)
+        })
+    })
+
+
+
+    $("#data_key_select").on("change",function(){
+
+
+        let _data_key = $("#data_key_select").val()
+
+        draw_chart(_data_key)
+        $("#anls-table tbody").animate({
+            opacity: 0.25,
+        }, 500, function(){
+            draw_table(_data_key);
+            $("#anls-table tbody").css('opacity', 1.0);
+        }
+        )
+
+
+    });
+
+    </script>
+
+{% endblock %}
+
