@@ -19,7 +19,7 @@ __tmp__/
 API_DOC.pdf
 uploads/
 uploads/*
-dataex/settings_local.py
+sricdms/settings_local.py
 venv
 FDATA/
 IMD/
