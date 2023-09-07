@@ -70,10 +70,10 @@
                                         <div class="col-4">
                                             <h6 class="mg-b-10">Select Asset</h6>
                                             <select class="form-control select2" id="asset">
-{#                                                {% for row in usr_assests %}#}
-{#                                                    <option value="{{row.identifier}}">{{row.name_only}}</option>#}
-                                                  <option value="">slk.geojson</option>
-{#                                                {% endfor %}#}
+                                                {% for row in usr_assests %}
+                                                    <option value="{{row.identifier}}">{{row.name_only}}</option>
+
+                                                {% endfor %}
                                             </select>
 
                                         </div>
@@ -135,7 +135,7 @@
 
     <script>
     console.log(`{{ sys_state }}`);
-    console.log(`{{ user_assests }}`)
+    console.log(`{{ usr_assests }}`);
     function show_reducer_doc(){
         let reducer_active = $("#reducer").val()
         console.log(reducer_active)
@@ -154,7 +154,8 @@
          show_reducer_doc()
     })
 
-    const asset_info_link = "{%url 'forecast_anls.get_asset_info'%}"
+    const asset_info_link = "{%url 'forecast_anls.get_asset_info'%}";
+
 
     function load_asset_unique_field(){
         let asset_identifier = $("#asset").val()
@@ -162,18 +163,14 @@
         fetch(`${asset_info_link}?asset_identifier=${asset_identifier}`).then(r=>r.json()).then((res_data)=>{
 
             let options = ''
-            console.log(res_data.data[2])
+            if   (res_data.data.unique_fields){
 
-            if   (res_data.data[2].unique_fields){
-
-                res_data.data[2].unique_fields.forEach((row)=>{
+                res_data.data.unique_fields.forEach((row)=>{
 
                     options += `<option value="${row}">${row}</option>`
 
                 })
             }
-            console.log(options)
-
             $("#unique_field").html(options)
 
         })

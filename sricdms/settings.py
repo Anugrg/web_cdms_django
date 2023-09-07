@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-)!lf2z538oqrk(xxh1tv*kzxr8k7!uui@r(50j%*%hyk_^=9q&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -129,6 +129,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+PLOT_DPI = 300  # dot per inch
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 MEDIA_URL = '/uploads/'

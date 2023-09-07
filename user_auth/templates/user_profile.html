@@ -6,6 +6,22 @@
 {% block page_name %} Profile {% endblock %}
 {% block page_title %} Profile {% endblock %}
 
+{% block extra_css %}
+
+    <style>
+        .asst-dorp-btn{
+            background: #eaeaea;
+            padding:7px;
+            border-radius:4px;
+        }
+        .asst-dorp-btn:hover{
+            background: #ccc;
+        }
+
+    </style>
+
+{% endblock %}
+
 {% block content %}
 
 <div class="page-header min-height-300 border-radius-xl mt-4" style="background-image: url('{% static '/assets/img/curved-images/curved0.jpg' %}'); background-position-y: 50%;">
@@ -169,17 +185,17 @@
                             <td>{{row.info.rec_count}}</td>
                             <td>
                                 {% for field in row.info.unique_fields %}
-                                    <span class="badge badge-secondary">{{field}}</span></br>
+                                    <span class="badge bg-gradient-secondary">{{field}}</span></br>
                                 {% endfor%}
                             </td>
-                            <td class="p-0" >
-                                <div class="dropdown dropleft crp">
-                                    <span class="asst-dorp-btn"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <td class="p-0 text-center">
+                                <div class="dropdown  dropstart pt-5" style="position: absolute;right:120px;">
+                                    <span class="asst-dorp-btn"  data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                         <i class="fas fa-ellipsis-h"></i>
                                     </span>
-                                    <div class="dropdown-menu" >
+                                    <div class="dropdown-menu">
                                         <a class="dropdown-item asset-deleter" href="#">Delete</a>
-                                        <a class="dropdown-item clipboard-copy" data-clipboard-text={{row.identifier}} href="#">Copy Identifier</a>
+{#                                        <a class="dropdown-item clipboard-copy" data-clipboard-text={{row.identifier}} href="#">Copy Identifier</a>#}
                                         <a class="dropdown-item asset-downloader" data-clipboard-text={{row.identifier}} href="#">Download</a>
                                     </div>
                                 </div>
@@ -188,7 +204,6 @@
                     {% endfor %}
                 </table>
           </div>
-
         </div>
       </div>
     </div>
@@ -258,6 +273,8 @@
 
 <script>
 
+   var notice = new Notice()
+
     var element = document.getElementById("profile-nav");
     element.classList.add("active");
 
@@ -310,6 +327,58 @@
             console.log('uploaded')
         })
     })
+
+     $(".table.tbl-assets").on('click', '.dropdown-item.asset-deleter',function(){ // delete asset
+
+        var row = $(this).closest("tr");
+        var asset_id = row.find("td:eq(1)").text();
+        console.log(asset_id)
+
+        notice.showLoading({type: 'dots',title:`Deleting Asset`});
+        fetch(`{% url 'user_auth.delete_asset' %}?asset_id=${asset_id}`).then(r=>r.json()).then(res_data=>{
+
+            if (res_data.error == null){
+                location.reload()
+            }
+            else{
+
+                tata.error("Delete failed", res_data.message)
+            }
+
+        }).finally(()=>{
+            notice.hideLoading()
+        })
+
+        console.log("deleted")
+    });
+
+    $(".table.tbl-assets").on('click', '.dropdown-item.asset-downloader',function(){ // download asset
+
+        var row = $(this).closest("tr");
+        var asset_id = row.find("td:eq(1)").text();
+        var asset_name = row.find("td:eq(0)").text();
+        console.log(asset_id)
+
+        notice.showLoading({type: 'dots',title:`Downloading Asset ${asset_name}`});
+
+        fetch(`{% url 'user_auth.download_asset' %}?asset_id=${asset_id}`).then(r=>r.json()).then(res_data=>{
+
+
+            if (res_data.error == null){
+                in_browser_download(JSON.stringify(res_data.asset_file), asset_name, 'application/json')
+
+            }
+            else{
+
+                tata.error("Download failed", res_data.message)
+            }
+
+        }).finally(()=>{
+            notice.hideLoading()
+        })
+
+        console.log("downloaded")
+    });
 
 </script>
 

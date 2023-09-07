@@ -5,6 +5,7 @@ from shapely.geometry import shape
 
 
 def get_asset_info(file: str) -> tuple:
+
     info = dict()
     print(file)
 

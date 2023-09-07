@@ -1,7 +1,9 @@
 
 from datetime import datetime as dt
+import json
 
 import fiona
+import pytz
 from shapely.geometry import shape
 
 from django.shortcuts import render
@@ -12,6 +14,7 @@ from django.conf import settings
 from forecast_data.models import system_state
 from forecast_anls.models import user_asset
 from forecast_anls.reducers import ecmwf_hres_region_reducers
+from user_auth.models import CdmsUser
 from forecast_anls.utils import get_asset_info
 
 # Create your views here.
@@ -25,18 +28,15 @@ class get_asset_info(View):
         data['error'] = None
         data['message'] = None
 
-        #if asset_identifier is None:
-        #    data['error'] = 'query-001'
-        #    data['message'] = 'insufficient query parameter'
-            #return data
-        print(settings.MEDIA_ROOT + '/slk.geojson')
+        if asset_identifier is None:
+            data['error'] = 'query-001'
+            data['message'] = 'insufficient query parameter'
+            return data
 
         try:
-            #asset = user_asset.objects.get(identifier=asset_identifier)
+            asset = user_asset.objects.get(identifier=asset_identifier)
 
-            asset = extract_asset_info(settings.MEDIA_ROOT + '/slk.geojson' )
-            print(asset)
-            data['data'] = asset #asset.info
+            data['data'] = asset.info
 
         except Exception as e:
             data['error'] = 'query-002'
@@ -46,9 +46,52 @@ class get_asset_info(View):
 
     def get(self, request):
         asset_identifier = request.GET.get('asset_identifier', None)
-        print(asset_identifier)
 
         return JsonResponse(self.asset_info(asset_identifier))
+
+
+def today_start():
+    today = dt.today()
+    today_start_date = dt(today.year, today.month, today.day)
+    project_tz = pytz.timezone(settings.TIME_ZONE)
+
+    return project_tz.localize(today_start_date)
+
+
+class get_user_fcst_assets(View):
+
+    def get(self, request):
+        data = dict()
+        user_id = request.user.id
+        print(user_id)
+        data['user_assets'] = self.get_assets(user_id)
+        return JsonResponse(data)
+
+    def post(self, request):
+        data = dict()
+        if request.content_type == "application/json":
+            try:
+                req_payload = json.loads(request.body.decode('utf-8'))
+            except:
+                data['error'] = 'invalid request'
+                data['message'] = 'unparsable json data'
+                return JsonResponse(data)
+
+        user_id = CdmsUser.objects.get(email=req_payload.get('username')).id
+        data['user_assets'] = self.get_assets(user_id)
+
+        data['error'] = None
+        data['message'] = 'Successful'
+
+        return JsonResponse(data)
+
+    def get_assets(self, user_id):
+        assets = list(
+            user_asset.objects.filter(
+                user_id=user_id
+            ).values('file', 'identifier', 'info')
+        )
+        return assets
 
 
 class forecast_by_region_ecmwf_hres(View):
@@ -58,9 +101,11 @@ class forecast_by_region_ecmwf_hres(View):
     def get(self, request):
         data = {}
         data['usr_assests'] = user_asset.objects.filter(user_id=request.user.id)
-
+        print(data)
         hres_state = system_state.objects.get(state_name='ECMWF_HRES_VIS')
         data['sys_state'] = hres_state
+        data['state_is_recent'] = data['sys_state'].updated_at > today_start()
+
         data['reducers'] = [
                     {
                         'name': r,
@@ -69,6 +114,7 @@ class forecast_by_region_ecmwf_hres(View):
                     for r in dir(self.reducer_class)
                     if not r.startswith('_')
         ]
+
         return render(request, 'forecast_by_region_ecwmf_hres.html', data)
 
 
@@ -83,28 +129,28 @@ class get_ecmwf_hres_region_data(View):
         data['error'] = None
         data['message'] = None
 
-        '''if asset_identifier is None or reducer_name is None or unique_field is None:
+        if asset_identifier is None or reducer_name is None or unique_field is None:
             data['error'] = 'query-001'
             data['message'] = 'insufficient query parameter'
-            return JsonResponse(data)'''
+            return JsonResponse(data)
 
         # check if reducer is valid
         if reducer_name not in dir(self.reducer_class):
             data['error'] = 'query-002'
             data['message'] = 'Invalid reducer'
 
-        # try:
-        #     asset_obj = user_asset.objects.get(identifier=asset_identifier)
-        # except Exception as e:
-        #     data['error'] = 'query-004'
-        #     data['message'] = str(e)
-        #     return JsonResponse(data)
-        #
-        # if unique_field not in asset_obj.info['unique_fields']:
-        #     data['error'] = 'query-003'
-        #     data['message'] = 'invalid unique field'
+        try:
+            asset_obj = user_asset.objects.get(identifier=asset_identifier)
+        except Exception as e:
+            data['error'] = 'query-004'
+            data['message'] = str(e)
+            return JsonResponse(data)
 
-        _asset_path = settings.MEDIA_ROOT + '/slk.geojson'  # asset_obj.file.path
+        if unique_field not in asset_obj.info['unique_fields']:
+             data['error'] = 'query-003'
+             data['message'] = 'invalid unique field'
+
+        _asset_path = asset_obj.file.path
         print(_asset_path)
 
         # get init_time and netcdf path

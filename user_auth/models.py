@@ -40,8 +40,8 @@ class AccountManager(BaseUserManager):
 
 def initial_user_permission():
     return {
-        'obs_r': [], 
-        'obs_w': [],       
+        'obs_r': True,
+        'obs_w': False,
         'fcst_graph': False, 
         'fcst_analysis': False, 
         'fcst_subset': False
@@ -58,7 +58,7 @@ class CdmsUser(AbstractBaseUser):
     is_staff = models.BooleanField('is a staff', default=False)
     is_superuser = models.BooleanField('if a superuser', default=False)
 
-    permission = models.JSONField('user permission', default = initial_user_permission)
+    permission = models.JSONField('user permission', default=initial_user_permission)
     reset_code = models.CharField('password reset code', max_length=32, null=True, default=None, editable=False)
 
     objects = AccountManager()

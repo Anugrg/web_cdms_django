@@ -11,13 +11,31 @@ from django.contrib.auth.forms import ReadOnlyPasswordHashField
 import json
 
 # Register your models here.
+
+
+def generate_perm(
+        obs_r: bool,
+        obs_w: bool,
+        fcst_graph: bool,
+        fcst_analysis: bool,
+        fcst_subset: bool
+) -> dict:
+    permission = {
+        'obs_r': bool(obs_r),
+        'obs_w': bool(obs_w),
+        'fcst_graph': bool(fcst_graph),
+        'fcst_analysis': bool(fcst_analysis),
+        'fcst_subset': bool(fcst_subset)
+    }
+    return permission
+
+
 class cdms_user_create_form(forms.ModelForm):
     class Meta:
         model = CdmsUser
         fields = '__all__'
 
     password1 = forms.CharField(label='Password1', widget=forms.PasswordInput)
-    # password2 = forms.CharField(label='Confirm Password', widget=forms.PasswordInput)
 
     obs_r = fields.MultipleChoiceField(
         label="Allow Observed Data Read",
@@ -39,13 +57,6 @@ class cdms_user_create_form(forms.ModelForm):
 
         super().__init__(*args, **kwargs)
 
-        country_choices = get_country_choices()
-
-        self.fields['obs_r'].choices = country_choices
-        self.fields['obs_r'].initial = country_choices[0]
-        self.fields['obs_w'].choices = country_choices
-        self.fields['obs_w'].initial = country_choices[0]
-
     def clean(self):
         try:
             obs_r, obs_w, fcst_graph, fcst_analysis, fcst_subset = self.cleaned_data['obs_r'], self.cleaned_data[
@@ -54,12 +65,7 @@ class cdms_user_create_form(forms.ModelForm):
         except KeyError as err:
             raise ValidationError((f'select a choice in {str(err)}'))
 
-        country_choice_validate(obs_r, obs_w)
-
-        cleaned_obs_r = clean_obs_country_list(obs_r)
-        cleaned_obs_w = clean_obs_country_list(obs_w)
-
-        permission = generate_perm(cleaned_obs_r, cleaned_obs_w, fcst_graph, fcst_analysis, fcst_subset)
+        permission = generate_perm(fcst_graph, fcst_analysis, fcst_subset)
 
         self.cleaned_data['permission'] = permission
 
@@ -87,15 +93,13 @@ class cdms_user_change_form(forms.ModelForm):
                                                     "this user's password, but you can change the password "
                                                     "using <a href=\"../password/\">this form</a>."))
 
-    obs_r = fields.MultipleChoiceField(
+    obs_r = fields.BooleanField(
         label="Allow Observed Data Read",
-        widget=forms.SelectMultiple(attrs={'style': 'width:350px'}),
         required=True
     )
 
-    obs_w = fields.MultipleChoiceField(
+    obs_w = fields.BooleanField(
         label="Allow Observed Data Write",
-        widget=forms.SelectMultiple(attrs={'style': 'width:350px'}),
         required=True
     )
 
@@ -106,11 +110,6 @@ class cdms_user_change_form(forms.ModelForm):
     def __init__(self, *args, **kwargs):
 
         super().__init__(*args, **kwargs)
-
-        country_choices = get_country_choices()
-
-        self.fields['obs_r'].choices = country_choices
-        self.fields['obs_w'].choices = country_choices
 
         if self.instance:
             self.fields['obs_r'].initial = self.instance.permission['obs_r']
@@ -125,25 +124,12 @@ class cdms_user_change_form(forms.ModelForm):
 
     def clean(self):
 
-        if 'obs_r' in self.cleaned_data:
-            obs_r = self.cleaned_data['obs_r']
-        else:
-            obs_r = []
-
-        if 'obs_w' in self.cleaned_data:
-            obs_w = self.cleaned_data['obs_w']
-        else:
-            obs_w = []
-
+        obs_r = self.cleaned_data['obs_r']
+        obs_w = self.cleaned_data['obs_w']
         fcst_graph, fcst_analysis, fcst_subset = self.cleaned_data['fcst_graph'], self.cleaned_data['fcst_analysis'], \
-        self.cleaned_data['fcst_subset']
+            self.cleaned_data['fcst_subset']
 
-        country_choice_validate(obs_r, obs_w)
-
-        cleaned_obs_r = clean_obs_country_list(obs_r)
-        cleaned_obs_w = clean_obs_country_list(obs_w)
-
-        permission = generate_perm(cleaned_obs_r, cleaned_obs_w, fcst_graph, fcst_analysis, fcst_subset)
+        permission = generate_perm(obs_r, obs_w, fcst_graph, fcst_analysis, fcst_subset)
 
         self.cleaned_data['permission'] = permission
 
@@ -157,7 +143,6 @@ class cdms_user_change_form(forms.ModelForm):
             user.save()
 
         return user
-
 
 class cdms_user_admin(UserAdmin):
 
@@ -183,4 +168,6 @@ class cdms_user_admin(UserAdmin):
          {'fields': ('name', 'email', 'password1', 'is_admin', 'is_superuser', 'is_staff')}),
         ('User Permission', {'fields': ('obs_r', 'obs_w', 'fcst_graph', 'fcst_analysis', 'fcst_subset')}),
     )
+
+admin.site.register(CdmsUser, cdms_user_admin)
 

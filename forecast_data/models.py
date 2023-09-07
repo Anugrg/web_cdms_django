@@ -18,7 +18,6 @@ class forecast_source(models.Model):
         indexes = [
             models.Index(fields=['name']),
         ]
-
     
 
 class system_state(models.Model):

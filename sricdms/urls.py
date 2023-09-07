@@ -19,11 +19,11 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('', include('home.urls')),
     path('user_auth/', include('user_auth.urls')),
-    path('', include('home.urls')), 
     path('observations/', include('obs_data.urls')),
     path('forecasts/', include('forecast_data.urls')),
-    path('user/', include('user_auth.urls')),
     path('spatial/', include('spatial_data_gen.urls')),
     path('bufr/', include('bufr_data.urls')),
     path('dqc/', include('dataqc.urls')),
