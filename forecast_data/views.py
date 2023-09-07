@@ -5,7 +5,7 @@ from datetime import datetime
 
 import numpy as np
 from netCDF4 import Dataset
-from sricdms.settings import ECMWF_HRES_NC
+from django.conf import settings
 
 from django.shortcuts import render
 from django.views import View
@@ -23,6 +23,9 @@ from .param_processors import (
 from .param_plot_info import ParamInfo
 from .helpers import NcFile, HRES, get_graph_params
 from forecast_anls.models import user_asset
+
+
+ECMWF_HRES_NC = settings.ECMWF_HRES_NC
 
 
 # Create your views here.
