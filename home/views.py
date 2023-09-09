@@ -1,17 +1,17 @@
 import json
+from datetime import datetime as dt
 
 from django.shortcuts import render
 from django.views import View
-
-from datetime import datetime as dt
-
 from django.db.models import Min, Max
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 
 from obs_data.models import station, obs_data
 
 # Create your views here.
 
-
+@method_decorator(login_required(login_url='user_auth.login'), name='dispatch')
 class HomeView(View):
 
     def get(self, request):
@@ -20,6 +20,7 @@ class HomeView(View):
         data['num_stations'] = station.objects.all().count()
         data['obs_count'] = obs_data.objects.all().count()
         data['period'] = self.construct_time_period_str()
+        data['user_name'] = request.user.name
         return render(request, 'home.html', data)
 
     def construct_time_period_str(self):

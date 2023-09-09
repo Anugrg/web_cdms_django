@@ -1,5 +1,5 @@
 import json
-from datetime import datetime as dt
+from datetime import datetime as dt, timedelta as td
 
 from django.shortcuts import render
 from django.http import JsonResponse
@@ -39,7 +39,8 @@ class GetParameters(View):
                     parameter.objects.filter(id__in=list(parameter_ids)).values('name', 'id')
                 )
             )
-
+        data['errors'] = None
+        data['message'] = 'List of parameters'
         data['parameters'] = params
         return JsonResponse(data)
 
@@ -185,27 +186,110 @@ class InsertObs(View):
         return JsonResponse(data)
 
 
+@method_decorator(csrf_exempt, name='dispatch')
 class GetObs(View):
 
+    def get_obs_data(self, request, start_date, end_date, station_id, param_id) -> JsonResponse:
+        data = dict()
+        try:
+            start_date_obj = dt.strptime(start_date, '%Y-%m-%d')
+            end_date_obj = dt.strptime(end_date, '%Y-%m-%d')
+            date_delta = (end_date_obj - start_date_obj).days
+
+        except:
+            data['error'] = 'query-001'
+            data['message'] = 'provide a valid date format'
+
+            return JsonResponse(data)
+
+        query_parameter_okay = False
+
+        if (station_id is not None) and (param_id is not None):
+            query_parameter_okay = (start_date is not None) \
+                                   or (end_date is not None) \
+                                   or (param_id is not None) \
+                                   or (station_id is not None) \
+                                   or (station_id.isdigit() != True) \
+                                   or (param_id.isdigit() != True)
+
+        if not query_parameter_okay:
+            data['error'] = 'error-query-002'
+            data[
+                'message'] = 'provide station_id, param_id, & start_date, end_date in yyyy-mm-dd format. max 180 day interval'
+
+            return JsonResponse(data)
+
+        # check for mermission
+        # if not has_permission_obs_r(request, int(station_id)):
+        #     data['error'] = 'EP-001'
+        #     data['message'] = 'User does not have enough permission'
+        #     return JsonResponse(data)
+
+        if date_delta > 180:
+            data['error'] = None
+            data['message'] = 'date range is more than 180 days, showing only for 180 days'
+
+            # override end date
+            end_date_obj = start_date_obj + td(days=180)
+
+        # if query_parameter_okay:
+        try:
+            _param = parameter.objects.get(pk=int(param_id))
+        except ValueError:
+            data['error'] = 'No data'
+            data['message'] = 'Station has no observations to show!'
+            return JsonResponse(data)
+
+        _stn = station.objects.get(pk=int(station_id))
+
+        data['parameter'] = f'{_param.full_name}'
+        data['unit'] = _param.unit
+        data['type'] = _param.parameter_type
+        data['station_name'] = _stn.name
+        data['wmo_id'] = _stn.wmo_id
+
+        data_query = obs_data.objects.filter(
+            start_time__gte=start_date_obj.strftime('%Y-%m-%d 00:00:00Z'),
+            end_time__lte=end_date_obj.strftime('%Y-%m-%d 00:00:00Z'),
+            parameter__id=param_id,
+            station=station_id
+        ).values('start_time', 'end_time', 'value')
+        data['data'] = list(data_query)
+
+        return JsonResponse(data)
+
     def get(self, request):
-        data = {}
+
+        # get query parameters
         start_date = request.GET.get('start_date', None)
         end_date = request.GET.get('end_date', None)
         station_id = request.GET.get('station_id', None)
         param_id = request.GET.get('param_id', None)
 
-        sdate = dt.strptime(start_date, '%Y-%m-%d')
-        edate = dt.strptime(end_date, '%Y-%m-%d')
+        return self.get_obs_data(request, start_date, end_date, station_id, param_id)
 
-        data['obs'] = list(
-            obs_data.objects.filter(
-                station_id=station_id,
-                parameter_id=param_id,
-                start_time__gte=sdate.strftime('%Y-%m-%d 00:00:00Z'),
-                end_time__lte=edate.strftime('%Y-%m-%d 00:00:00Z')
-            ).values('end_time', 'value'))
+    def post(self, request):
 
-        return JsonResponse(data)
+        data = dict()
+
+        if request.content_type == "application/json":
+            try:
+                req_payload = json.loads(request.body.decode('utf-8'))
+            except:
+                data['error'] = 'invalid request'
+                data['message'] = 'unparsable json data'
+                return JsonResponse(data)
+        else:
+            data['error'] = 'e-004'
+            data['message'] = 'invalid content type must be application/json'
+            return JsonResponse(data)
+
+        start_date = req_payload.get('start_date', None)
+        end_date = req_payload.get('end_date', None)
+        station_id = req_payload.get('station_id', None)
+        param_id = req_payload.get('param_id', None)
+
+        return self.get_obs_data(request, start_date, end_date, station_id, param_id)
 
 
 class StationMeta(View):

@@ -364,13 +364,13 @@
       fetch(`{% url 'obs_data.get_obs'%}?start_date=${start_date}&end_date=${end_date}&station_id=${stn.value}&param_id=${param.value}`)
       .then(r=>r.json())
       .then( resp => {
-        if (resp['obs'].length == 0){
+        if (resp['data'].length == 0){
 
           return
         }
         else{
           obs = []
-          resp['obs'].forEach((item)=>{
+          resp['data'].forEach((item)=>{
             if (item['value'] == -9999.0){
 
               obs.push([moment(item['end_time']).unix()*1000, 0])
