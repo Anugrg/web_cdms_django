@@ -10,6 +10,8 @@ from django.shortcuts import render
 from django.views import View
 from django.http import JsonResponse
 from django.conf import settings
+from django.utils.decorators import method_decorator
+from django.contrib.auth.decorators import login_required
 
 from forecast_data.models import system_state
 from forecast_anls.models import user_asset
@@ -58,12 +60,12 @@ def today_start():
     return project_tz.localize(today_start_date)
 
 
+@method_decorator(login_required(login_url='user_auth.login'), name='get')
 class get_user_fcst_assets(View):
 
     def get(self, request):
         data = dict()
         user_id = request.user.id
-        print(user_id)
         data['user_assets'] = self.get_assets(user_id)
         return JsonResponse(data)
 
@@ -94,6 +96,7 @@ class get_user_fcst_assets(View):
         return assets
 
 
+@method_decorator(login_required(login_url='user_auth.login'), name='get')
 class forecast_by_region_ecmwf_hres(View):
 
     reducer_class = ecmwf_hres_region_reducers
@@ -118,6 +121,7 @@ class forecast_by_region_ecmwf_hres(View):
         return render(request, 'forecast_by_region_ecwmf_hres.html', data)
 
 
+@method_decorator(login_required(login_url='user_auth.login'), name='get')
 class get_ecmwf_hres_region_data(View):
 
     ecmwf_hres_state = "ECMWF_HRES_NC"

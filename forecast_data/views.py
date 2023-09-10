@@ -1,6 +1,7 @@
 import os
 import io
 import pytz
+import json
 from datetime import datetime 
 
 import numpy as np
@@ -11,6 +12,9 @@ from django.shortcuts import render
 from django.views import View
 from django.conf import settings
 from django.http.response import FileResponse, JsonResponse, HttpResponse
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt
 
 from forecast_data.models import system_state
 from .plotter import animator, grapher, ShpGrapher, ShpAnimator
@@ -27,10 +31,16 @@ from forecast_anls.models import user_asset
 
 ECMWF_HRES_NC = settings.ECMWF_HRES_NC
 
+models = {
+    # 'ECMWF_SEAS_NC': SEAS,
+    'ECMWF_HRES_NC': HRES,
+    # 'ECMWF_ENS_NC': ENS
+}
+
 
 # Create your views here.
 
-
+@method_decorator(login_required(login_url='user_auth.login'), name='dispatch')
 class ForecastView(View):
 
     lead_day = 10
@@ -64,7 +74,7 @@ class ForecastView(View):
 
         return render(request, 'forecast_view.html', data)
 
-
+@method_decorator(login_required(login_url='user_auth.login'), name='get')
 class get_netcdf_subset_ecmwf_hres(View):
 
     state_name = "ECMWF_HRES_NC"
@@ -240,6 +250,7 @@ def get_subset_netcdf(
     return file_response
 
 
+@method_decorator(login_required(login_url='user_auth.login'), name='get')
 class get_graph(View):
 
     state_name = "ECMWF_HRES_NC"
@@ -360,10 +371,11 @@ class get_graph(View):
 
         return file_response
 
+
+@method_decorator(login_required(login_url='user_auth.login'), name='get')
 class get_animated_graph(View):
 
     state_name = "ECMWF_HRES_NC"
-    template_name = 'forecast_graph_hres.html'
     lead_day = 10
     daily_step = 4
     processor_class = ecmwf_hres_anime_processor
@@ -487,6 +499,8 @@ class get_fcst_graph_params(View):
         return JsonResponse(data)
 
 
+
+@method_decorator(login_required(login_url='user_auth.login'), name='get')
 class ShpFileView(View):
 
     def get(self, request):
@@ -506,6 +520,7 @@ class ShpFileView(View):
         return JsonResponse(shp)
 
 
+@method_decorator(login_required(login_url='user_auth.login'), name='get')
 class ShpFilePlotGraph(View):
 
     def get(self, request):
@@ -612,6 +627,7 @@ class ShpFilePlotGraph(View):
         return file_response
 
 
+@method_decorator(login_required(login_url='user_auth.login'), name='get')
 class ShpFilePlotAnimation(View):
 
     def get(self, request):
