@@ -1,5 +1,5 @@
 
-# Srilanka Web CDMS
+# Web CDMS
 Effectively managing climatological, hydrological and other environmental data commonly
 referred as Earth system data is crucial for earth observations monitoring, analysis,
 modeling and prediction - at the national, regional and global levels - and is essential for the
